@@ -1,0 +1,27 @@
+/* Airport wayfinding and archive luggage labels, keeping JSB colours. */
+.nav nav a.wayfinding-link,.mobile-menu a.wayfinding-link{display:flex;align-items:center;gap:9px;flex-direction:row;position:relative}
+.wf-icon{width:21px;height:21px;flex:0 0 21px;opacity:.8}.wf-label{display:block;line-height:1.35}.wf-label .nav-ko{display:block;margin-top:3px;font-size:10px;letter-spacing:.8px}.wf-arrow{display:inline-block;font-size:19px;transition:transform .2s;margin-left:3px}.wayfinding-link:hover .wf-arrow{transform:translateX(4px)}.wayfinding-link[aria-current=page] .wf-icon{color:#ef705c}.nav ul{gap:24px}.nav nav a.nav-cta .wf-label>span{display:none}
+.travel-site .nav nav{gap:22px}.travel-site .wf-icon{width:18px;height:18px;flex-basis:18px}.travel-site .nav-cta .wf-arrow{font-size:18px}
+.moment-copy.luggage-label{position:relative;margin-top:20px;padding:22px 25px;background:#e7e2d7;color:#1d292b;border-top:4px solid #d24932;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%)}
+.luggage-meta{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #26333040;padding-bottom:14px;margin-bottom:17px;gap:12px}.luggage-meta b{font-size:23px;letter-spacing:2px;font-family:Arial,sans-serif}.luggage-meta span{font-size:12px;color:#515c57}.luggage-label>small{color:#8d3c30;font-size:11px}.luggage-label h3{font-size:24px;margin:10px 0}.luggage-label p{color:#46524b;font-size:15px;line-height:1.8}.luggage-label .moment-source{color:#5f6b62}.luggage-stub{border-top:1px dashed #6b746b;margin-top:20px;padding-top:15px;display:flex;justify-content:space-between;align-items:center;gap:16px}.luggage-stub i{width:90px;height:23px;background:repeating-linear-gradient(90deg,#24332b 0 1px,transparent 1px 3px,#24332b 3px 5px,transparent 5px 8px)}.luggage-stub span{font-size:10px;letter-spacing:1px}
+/* The same airport component on the corporate home, with a scoped reset. */
+body:not(.travel-site) .airport-terminal{--font:var(--font-sans);font-family:var(--font-sans);letter-spacing:0}
+.airport-terminal [hidden]{display:none!important}.airport-terminal button{font-family:inherit}.airport-terminal .route-nodes{list-style:none;margin:0;padding:0}.airport-terminal .airport-ad img{display:block;width:100%;height:100%;object-fit:cover}.airport-terminal .route-intro h2{font-weight:600}.airport-terminal .route-product-heading h3{letter-spacing:0}.airport-terminal .route-product-buttons button{font-weight:400}.airport-terminal .route-stop-labels{font-weight:400}
+@media(max-width:1100px){.nav ul{gap:16px}.nav nav a.wayfinding-link{gap:6px}.nav .wf-icon{width:17px;height:17px;flex-basis:17px}.nav .wf-arrow{font-size:17px}}
+@media(max-width:760px){.travel-site .nav nav{gap:12px}.travel-site .nav nav .wf-icon{display:none}.travel-site .nav nav .wf-arrow{display:none}.moment-copy.luggage-label{padding:19px}.luggage-label h3{font-size:21px}.luggage-meta b{font-size:20px}.luggage-label p{font-size:14px}.mobile-menu .wf-icon{width:25px;height:25px;flex-basis:25px}.mobile-menu .wf-arrow{margin-left:auto}.mobile-menu .wayfinding-link{width:100%}}
+@media(prefers-reduced-motion:reduce){.wf-arrow{transition:none}}
+body:not(.travel-site) .airport-terminal .route-day-panel{padding:0}
+.inquiry-result{padding:25px 0 0}
+@media(max-width:600px){.travel-site .nav nav a.corporate{display:none}}
+/* Corporate homepage starts with company identity before service and travel discovery. */
+.home-company{background:#e9e5dc;color:#202927;padding:90px 5%;scroll-margin-top:100px}.home-company-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center}.home-company .eyebrow{color:#8e3b2d}.home-company h2{font-size:clamp(30px,3.4vw,46px);line-height:1.3;letter-spacing:-1.7px;margin:18px 0 26px;word-break:keep-all}.home-company-name{font-size:18px;font-weight:650;margin-bottom:12px}.home-company-description{font-size:17px;line-height:1.95;color:#525c55;word-break:keep-all;max-width:610px}.home-company-facts{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid #233c2c30;padding-top:20px;margin:25px 0;font-size:14px;color:#4b574f}.home-company-facts span+span{border-left:1px solid #233c2c30;padding-left:14px}.home-company .btn{color:#26372b;border-color:#26372b70;font-size:15px}.home-company figure{margin:0}.home-company figure img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:center}.home-company figcaption{font-size:12px;color:#657064;margin-top:13px;line-height:1.7}
+@media(max-width:760px){.home-company{padding:60px 22px}.home-company-inner{grid-template-columns:1fr;gap:30px}.home-company h2{font-size:31px;letter-spacing:-1.1px}.home-company-description{font-size:16px}.home-company figure img{aspect-ratio:1.4}.home-company-facts{gap:10px;font-size:13px}.home-company-facts span+span{padding-left:10px}}
+/* Retain both travel links on phones; nested label spans must stay visible. */
+@media(max-width:600px){
+.travel-site .nav{height:auto;min-height:112px;padding-top:10px;padding-bottom:10px;gap:10px}
+.travel-site .nav nav{flex-direction:column;align-items:stretch;gap:4px;flex-shrink:0}
+.travel-site .nav nav a.wayfinding-link{min-height:40px;justify-content:center;font-size:12px}
+.travel-site .nav nav .nav-cta{min-height:44px;padding:10px 12px}
+.travel-site .nav nav .nav-cta .wf-label{display:block}
+}
+@media(max-width:600px){.travel-site .nav nav a.nav-cta.wayfinding-link{min-height:44px}}

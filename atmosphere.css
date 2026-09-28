@@ -1,0 +1,38 @@
+/* Coastal atmosphere — lightweight decorative vectors; no content imagery replaced. */
+:root{--surface-charcoal:#181b1c;--surface-warm:#25201e;--surface-paper:#f1eee7}
+body{background:#121719}
+/* Thin tidal contours are confined to decorative edges, beneath the text. */
+.hero,.page-head,.travel-gateway,.services,.story,.values,.timeline,.process,.services-detail,.tour-detail,.contact-section,.closing,footer,.travel-site .detail-header,.travel-site .editorial-copy,.travel-site .planning{isolation:isolate}
+.hero{background:radial-gradient(ellipse at 95% 4%,#56423880,transparent 58%),linear-gradient(120deg,#11191c 0%,#1b1e20 54%,#29231f 100%)}
+.hero:after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:url('assets/coastal-lines.svg') right center/cover no-repeat;opacity:.19;mask-image:linear-gradient(90deg,transparent 20%,#000 80%)}
+.hero:before{content:'';position:absolute;inset:0;background:url('assets/paper-grain.svg');pointer-events:none;z-index:0;opacity:.7}
+.hero-inner{position:relative;z-index:1}
+.nav,.nav.scrolled{background:#141b1ef2;border-bottom-color:#c9b6a61a}
+.services,.services-detail,.tour-detail{background:linear-gradient(120deg,#192225,#161b1d 55%,#24211f)}
+.services .svc{background:#ffffff03}.services .svc:hover{background:#ffffff09}
+.page-head{background:linear-gradient(110deg,#171e21 20%,#252526 70%,#342923)!important;position:relative;overflow:hidden}
+.page-head:after{display:block;content:'';position:absolute;inset:-30% -8% -45% 37%;background:url('assets/coastal-lines.svg') center/cover;opacity:.22;z-index:-1;pointer-events:none}
+.page-head>.container{position:relative;z-index:1}
+.travel-gateway{background:linear-gradient(105deg,#252523,#3a2c26)}
+.story,.timeline{background-image:url('assets/paper-grain.svg'),linear-gradient(140deg,#1b2225,#242324);background-color:#1b2225}
+.values,.process{background:linear-gradient(130deg,#232626,#1a2225)}
+.blog,.travel-site .journeys,.travel-site .detail-content{background-image:url('assets/paper-grain.svg'),radial-gradient(ellipse at 100% 0%,#ded8cd88,transparent 65%),linear-gradient(120deg,#f4f1ea,#eae6dc);background-color:var(--surface-paper)}
+.closing,.travel-site .planning{background:linear-gradient(115deg,#a72c23,#cf382a 54%,#e75b3b);position:relative}
+.closing:before,.travel-site .planning:before{content:'';position:absolute;inset:0;background:url('assets/coastal-lines.svg') right 30%/cover no-repeat;opacity:.23;z-index:-1;pointer-events:none}
+.closing:after,.travel-site .planning:after{content:'';position:absolute;inset:0;background:url('assets/paper-grain.svg');opacity:.65;pointer-events:none;z-index:-1}
+footer{background-image:url('assets/paper-grain.svg'),radial-gradient(ellipse at 95% 100%,#52433266,transparent 60%),linear-gradient(110deg,#172124,#212526);position:relative}
+footer:before{content:'';position:absolute;inset:0;background:url('assets/coastal-lines.svg') 110% 55%/1200px auto no-repeat;opacity:.09;z-index:-1;pointer-events:none}
+/* The travel site's supplied city photograph stays intact. */
+.travel-site .nav{background:#182124f5;border-bottom-color:#ffffff1c}
+.travel-site .hero-photo:after{background:linear-gradient(90deg,#10222aea 0%,#14252cc4 31%,#1b262428 76%),linear-gradient(0deg,#15252dcc,transparent 65%)}
+.travel-site .hero-copy:after{content:'';position:absolute;inset:0;z-index:-1;background:url('assets/coastal-lines.svg') 25% center/1400px auto no-repeat;opacity:.12;mask-image:linear-gradient(90deg,#000,transparent 60%);pointer-events:none}
+.travel-site .hero-copy:before{content:'';position:absolute;inset:0;background:url('assets/paper-grain.svg');opacity:.4;pointer-events:none;z-index:-1}
+.travel-site .editorial-copy{background:radial-gradient(ellipse at 100% 10%,#67514250,transparent 75%),linear-gradient(120deg,#1b2729,#292c2a);position:relative}
+.travel-site .editorial-copy:after{content:'';position:absolute;inset:0;background:url('assets/coastal-lines.svg') 40% 70%/1000px auto no-repeat;opacity:.18;z-index:-1;pointer-events:none}
+.travel-site .editorial-number{color:#ffffff08}.travel-site .editorial-copy h2 em{color:#c3b6a5}.travel-site .editorial-copy>p:not(.eyebrow){color:#c0c3bd}
+.travel-site .detail-header{background:radial-gradient(ellipse at top right,#60504455,transparent 70%),linear-gradient(115deg,#172328,#292b2a);padding-bottom:35px}
+.travel-site .trip-summary,.tour-aside{background:linear-gradient(135deg,#203035,#292b27);border:1px solid #ffffff15}
+.travel-site .ribbon,.ticker-strip{background:linear-gradient(90deg,#b22c22,#d94732,#b73528)}
+.travel-site .planning-star{color:#501b18;opacity:.45}
+.travel-site .detail-content{margin-top:0}.travel-site .next-trip{background-image:url('assets/paper-grain.svg');background-color:#e4dfd4}
+@media(max-width:760px){.hero:after{opacity:.14;background-size:auto 100%;mask-image:linear-gradient(180deg,transparent,#000)}.travel-site .hero-photo:after{background:linear-gradient(180deg,#142932dd,#14272e85 50%,#132a3238 72%,#13232deb),linear-gradient(90deg,#11242a80,transparent)}.page-head:after{left:15%;opacity:.15}.travel-site .editorial-copy:after{opacity:.12}.travel-site .planning-star{opacity:.16}}

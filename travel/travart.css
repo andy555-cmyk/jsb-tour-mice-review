@@ -1,0 +1,28 @@
+/* TRAVART product collection */
+.travart-section{padding:clamp(76px,9vw,150px) max(5vw,24px);background:#efece4;color:#192127}
+.travart-intro{max-width:1420px;margin:0 auto 42px;display:flex;align-items:end;justify-content:space-between;gap:40px}
+.travart-intro .eyebrow{color:#c42d20;letter-spacing:.2em;font-weight:800}
+.travart-intro h2{font-size:clamp(40px,5.7vw,86px);line-height:1.07;letter-spacing:-.055em;margin:18px 0 0}
+.travart-intro h2 em{font-style:normal;color:#c52b21}
+.travart-intro>p{max-width:410px;font-size:clamp(15px,1.35vw,19px);line-height:1.65;margin:0 0 8px;color:#4c5558}
+.travart-grid{max-width:1420px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.travart-card{min-width:0;background:#fff;box-shadow:0 8px 28px rgba(10,20,25,.08);border:1px solid #dedbd2;display:flex;flex-direction:column}
+.travart-cover{display:block;overflow:hidden;background:#222}
+.travart-cover img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:contain;transition:transform .5s ease}
+.travart-cover:hover img{transform:scale(1.01)}
+.travart-card-body{padding:26px 28px 30px;display:flex;flex-direction:column;flex:1;gap:12px}
+.travart-card-body>span{font-size:12px;letter-spacing:.12em;color:#bb3226;font-weight:800}
+.travart-card-body h3{margin:0;font-size:clamp(23px,2vw,30px);letter-spacing:-.04em}
+.travart-card-body p{margin:0;color:#536064;line-height:1.55}
+.travart-card details{margin-top:auto;border-top:1px solid #dde1df;padding-top:18px}
+.travart-card summary{cursor:pointer;font-weight:700;color:#243a44;list-style:none}
+.travart-card summary::after{content:'+';float:right;font-size:22px;line-height:1}
+.travart-card details[open] summary::after{content:'−'}
+.travart-schedules{display:flex;flex-wrap:wrap;gap:8px;padding-top:15px}
+.travart-schedules a{padding:9px 10px;background:#f2f5f5;border:1px solid #dce4e5;font-size:13px;color:#203841;text-decoration:none}
+.travart-schedules a:hover,.travart-schedules a:focus-visible{border-color:#b42b20}
+.travart-book{display:block;text-align:center;padding:16px 12px;margin-top:7px;background:#c7281d;color:#fff;font-weight:800;text-decoration:none}
+.travart-book:hover,.travart-book:focus-visible{background:#982016}
+.travart-note{max-width:1420px;margin:24px auto 0;color:#5c6361;font-size:14px}
+@media(max-width:900px){.travart-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.travart-intro{align-items:start;flex-direction:column;gap:18px}}
+@media(max-width:600px){.travart-section{padding:72px 22px}.travart-grid{grid-template-columns:1fr;gap:22px}.travart-intro h2{font-size:clamp(38px,10vw,56px)}.travart-card-body{padding:23px}}
