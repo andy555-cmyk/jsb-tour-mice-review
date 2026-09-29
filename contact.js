@@ -136,9 +136,17 @@
       return;
     }
     const values = new FormData(form);
+    const field = key => String(values.get(key) || '').trim();
+    // The email is read by JSB staff: Korean labels, empty fields left out, reply goes to the visitor.
+    const topic = field('product') || '여행·행사 상담';
     const payload = new URLSearchParams();
-    for (const [key, value] of values) payload.set(key, String(value).trim());
-    payload.set('_subject', t('[JSB 홈페이지 문의] ', '[JSB website inquiry] ') + (product.options[product.selectedIndex]?.text || t('여행·행사 상담', 'Travel / event inquiry')));
+    [['이름', field('name')], ['회사·단체', field('company')], ['연락 이메일', field('email')],
+     ['관심 상품·서비스', field('product')], ['희망 날짜', field('date')],
+     ['예상 인원', field('people') ? field('people') + '명' : ''], ['문의 내용', field('message')],
+     ['작성 화면', english ? '영문 홈페이지' : '']]
+      .forEach(([label, text]) => { if (text) payload.set(label, text); });
+    payload.set('_replyto', field('email'));
+    payload.set('_subject', '[JSB 홈페이지 문의] ' + topic + ' · ' + field('name') + (english ? ' (영문)' : ''));
     payload.set('_template', 'table');
     payload.set('_honey', form.querySelector('[name="_honey"]')?.value || '');
     const controller = new AbortController();
