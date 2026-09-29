@@ -159,3 +159,25 @@
 
 /* Spam trap for the delivery service; people never see or reach it. */
 .hp-field{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+
+/* Privacy notice: consent summary on the inquiry form and the policy page. */
+.consent-summary{margin:18px 0 0;padding:14px 15px;border:1px solid #546971;border-radius:6px;background:#17262b;color:#c9d6d8;font-size:12.5px;line-height:1.7}
+.consent-summary>b{display:block;margin-bottom:8px;color:#fff;font-size:13px}
+.consent-summary dl{display:grid;gap:7px;margin:0}
+.consent-summary dl>div{display:grid;grid-template-columns:84px 1fr;gap:10px}
+.consent-summary dt{color:#fff;font-weight:700}
+.consent-summary dd{margin:0;overflow-wrap:anywhere}
+.consent-summary a{display:inline-block;margin-top:10px;color:#ffb3ad;text-decoration:underline;text-underline-offset:3px}
+.privacy-note a{color:#ff9c96;text-decoration:underline;text-underline-offset:3px}
+.privacy-section{padding:72px 48px 110px}
+.privacy-doc{max-width:860px}
+.privacy-doc .privacy-meta{margin-bottom:6px;color:#9a9a9a;font-size:14px}
+.privacy-doc h2{margin:46px 0 14px;color:#fff;font-size:22px;line-height:1.4;letter-spacing:-.4px}
+.privacy-doc p,.privacy-doc li,.privacy-doc dd{color:#c4c4c4;font-size:15px;line-height:1.9}
+.privacy-doc ul{margin:8px 0;padding-left:20px;list-style:disc}
+.privacy-doc .privacy-table{margin:12px 0 16px;border-top:1px solid #333}
+.privacy-doc .privacy-table>div{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:12px 0;border-bottom:1px solid #2a2a2a}
+.privacy-doc dt{color:#fff;font-size:14px;font-weight:600;line-height:1.8}
+.privacy-doc dd{margin:0;overflow-wrap:anywhere}
+.privacy-doc a{color:#ff9c96;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+@media(max-width:600px){.privacy-section{padding:48px 22px 80px}.privacy-doc h2{margin-top:38px;font-size:19px}.privacy-doc .privacy-table>div{grid-template-columns:1fr;gap:2px}.consent-summary dl>div{grid-template-columns:1fr;gap:0}}
