@@ -147,7 +147,8 @@
     sendButton.textContent = t('전송 중…', 'Sending…');
     status.textContent = t('문의 전송을 요청하고 있습니다', 'Sending your inquiry');
     try {
-      const response = await fetch('https://formsubmit.co/ajax/jsbmaster@jsbtour.com', {
+      // FormSubmit alias for jsbmaster@jsbtour.com (activated 2026-09-29 for andy555-cmyk.github.io); keeps the inbox address out of the code.
+      const response = await fetch('https://formsubmit.co/ajax/9ba6a8ee5fc295567910664e1297cf88', {
         method: 'POST', body: payload, signal: controller.signal, credentials: 'omit'
       });
       const data = await response.json();
