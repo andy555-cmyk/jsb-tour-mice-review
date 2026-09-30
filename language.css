@@ -30,3 +30,51 @@ html[lang=en] .hero .display-line em{margin-right:.3em}
 .biz-info{max-width:1280px;margin:34px auto 0;padding-top:18px;border-top:1px solid #222;color:#8b8b8b;font-size:11px;line-height:1.8;letter-spacing:0;overflow-wrap:anywhere}
 .biz-info a{color:#b8b8b8;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .travel-site .biz-info{max-width:none;margin:0;padding:16px 0;color:#8f8f88}
+/* Language menu (six languages). Replaces the single EN / GLOBAL switch. */
+.lang-menu{position:relative;flex:0 0 auto}
+.lang-menu>summary{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 12px;border:1px solid #7778;border-radius:2px;color:#fff;font:750 11px/1 Arial,sans-serif;letter-spacing:.1em;white-space:nowrap;cursor:pointer;list-style:none;user-select:none;transition:background .2s,border-color .2s}
+.lang-menu>summary::-webkit-details-marker{display:none}
+.lang-menu>summary::before{content:'';width:13px;height:13px;border:1.5px solid currentColor;border-radius:50%;box-sizing:border-box;background:linear-gradient(currentColor,currentColor) 50%/1.5px 100% no-repeat,linear-gradient(currentColor,currentColor) 50%/100% 1.5px no-repeat;opacity:.85}
+.lang-menu>summary::after{content:'▾';font-size:10px;opacity:.8}
+.lang-menu>summary:hover,.lang-menu>summary:focus-visible,.lang-menu[open]>summary{background:#e83828;border-color:#e83828}
+.lang-menu ul{position:absolute;right:0;top:calc(100% + 8px);z-index:80;min-width:172px;margin:0;padding:6px;list-style:none;background:#101010;border:1px solid #3a3a3a;border-radius:4px;box-shadow:0 14px 34px #000a}
+.lang-menu li a{display:block;padding:10px 12px;border-radius:3px;color:#e9e9e9;font-size:14px;line-height:1.3;text-decoration:none;white-space:nowrap}
+.lang-menu li a:hover,.lang-menu li a:focus-visible{background:#1f1f1f;color:#fff}
+.lang-menu li a[aria-current]{color:#ff9c96}
+.lang-menu li a[aria-current]::after{content:'  ✓'}
+.nav>.lang-menu{margin-left:auto}
+.nav>.cta+.lang-menu{margin-left:0}
+.travel-site .nav>.lang-menu{margin-left:10px}
+.mobile-menu li.lang-item{margin-top:10px}
+.mobile-menu .lang-list{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.mobile-menu .lang-list li{margin:0;border:0}
+.mobile-menu ul .lang-list a{display:inline-flex;align-items:center;min-height:40px;padding:0 13px;border:1px solid #7778;border-radius:2px;color:#fff;font:600 14px/1 Arial,sans-serif;letter-spacing:0}
+.mobile-menu ul .lang-list a[aria-current]{background:#e83828;border-color:#e83828}
+@media(max-width:1200px){.travel-site .nav>.lang-menu{margin-left:0}}
+@media(max-width:850px){.nav>.lang-menu{margin-left:auto}}
+@media(max-width:600px){.nav>.lang-menu>summary{min-height:36px;padding:0 9px;font-size:10px}.lang-menu ul{right:-6px}}
+@media(max-width:360px){.nav>.lang-menu>summary{padding:0 7px;gap:5px}.nav>.lang-menu>summary::before{display:none}}
+/* Chinese and Japanese: break lines between characters (keep-all is for Korean) and use CJK fonts. */
+html[lang^=zh] *,html[lang=ja] *{word-break:normal!important;line-break:strict}
+html[lang^=zh]{--font-sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;--font-display:"Helvetica Neue","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
+html[lang=ja]{--font-sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo","Noto Sans JP",sans-serif;--font-display:"Helvetica Neue","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif}
+html[lang=fr],html[lang=es]{hyphens:auto}
+/* The header's own nav styles (flex rows, small caps) must not reach the language list. */
+.nav .lang-menu ul{display:block;gap:0}
+.nav .lang-menu ul li{display:block;margin:0}
+.nav .lang-menu ul a{display:block;flex-direction:initial;gap:0;font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;line-height:1.3}
+.mobile-menu ul.lang-list{display:flex!important;flex-direction:row!important;flex-wrap:wrap;gap:8px}
+.mobile-menu ul.lang-list li{flex:0 0 auto;width:auto;border:0;padding:0}
+.mobile-menu ul.lang-list a{text-transform:none;font-size:14px!important;padding:0 13px!important;justify-content:center}
+/* The small English sub-label under each menu item only helps on Korean pages. */
+html:not([lang=ko]) .nav .nav-ko,html:not([lang=ko]) .mobile-menu .nav-ko{display:none}
+/* Travel-site header on tablets: one row must hold the logo, three links and the language menu in every language. */
+@media(max-width:1000px){.travel-site .nav nav{gap:12px}.travel-site .nav nav .wf-icon,.travel-site .nav nav .wf-arrow{display:none}.travel-site .nav>.lang-menu>summary::before{display:none}}
+@media(max-width:900px){.travel-site .nav nav a.corporate{display:none}}
+/* Long translations: let the business-info link and the travel header links wrap on small phones. */
+.biz-info a{white-space:normal}
+@media(max-width:400px){.travel-site .nav nav{max-width:132px}.travel-site .nav nav a.wayfinding-link{white-space:normal;text-align:center;line-height:1.25}}
+@media(max-width:360px){.travel-site .nav nav{max-width:112px}}
+/* Japanese headings: break between phrases where the browser supports it (Chrome, Edge). */
+html[lang=ja] :is(h1,h2,h3,h4,.display-line,.hero-kicker){word-break:auto-phrase!important}
+html[lang=ja] :is(h1,h2,h3,h4,.display-line,.hero-kicker){overflow-wrap:anywhere}

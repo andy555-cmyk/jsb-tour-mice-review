@@ -1,7 +1,10 @@
 'use strict';
 (() => {
   const english = document.documentElement.lang === 'en';
-  const t = (ko, en) => english ? en : ko;
+  const t = (ko, en, vars) => window.JSB_T ? window.JSB_T(ko, en, vars) : (english ? en : ko);
+  const lang = window.JSB_LANG || (english ? 'en' : 'ko');
+  // Tells JSB which language page the visitor used (email stays in Korean for JSB staff).
+  const pageLanguage = {en: '영문', fr: '불어', es: '스페인어', zh: '중국어', ja: '일본어'}[lang] || '';
   const form = document.getElementById('inquiry-form');
   const result = document.getElementById('inquiry-result');
   const preview = document.getElementById('inquiry-preview');
@@ -30,7 +33,7 @@
     const value = requestedProduct.replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, 160);
     if (value) {
       if (!Array.from(product.options).some(option => option.value === value)) {
-        product.add(new Option(english && productNamesEn[value] ? productNamesEn[value] : value, value));
+        product.add(new Option(productNamesEn[value] ? t(value, productNamesEn[value]) : value, value));
       }
       product.value = value;
     }
@@ -143,10 +146,10 @@
     [['이름', field('name')], ['회사·단체', field('company')], ['연락 이메일', field('email')],
      ['관심 상품·서비스', field('product')], ['희망 날짜', field('date')],
      ['예상 인원', field('people') ? field('people') + '명' : ''], ['문의 내용', field('message')],
-     ['작성 화면', english ? '영문 홈페이지' : '']]
+     ['작성 화면', pageLanguage ? pageLanguage + ' 홈페이지' : '']]
       .forEach(([label, text]) => { if (text) payload.set(label, text); });
     payload.set('_replyto', field('email'));
-    payload.set('_subject', '[JSB 홈페이지 문의] ' + topic + ' · ' + field('name') + (english ? ' (영문)' : ''));
+    payload.set('_subject', '[JSB 홈페이지 문의] ' + topic + ' · ' + field('name') + (pageLanguage ? ' (' + pageLanguage + ')' : ''));
     payload.set('_template', 'table');
     payload.set('_honey', form.querySelector('[name="_honey"]')?.value || '');
     const controller = new AbortController();
@@ -209,7 +212,7 @@
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement('a');
     anchor.href = url;
-    anchor.download = `JSB-${english ? 'inquiry' : '문의메모'}-${today}.txt`;
+    anchor.download = `JSB-${lang === 'ko' ? '문의메모' : 'inquiry'}-${today}.txt`;
     document.body.append(anchor);
     anchor.click();
     anchor.remove();

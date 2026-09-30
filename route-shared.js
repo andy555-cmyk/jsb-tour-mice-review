@@ -1,6 +1,6 @@
 // Independent route explorer: selection only, with no timed playback.
 (() => {
- const english=document.documentElement.lang==='en';
+ const T=(ko,en,vars)=>window.JSB_T?window.JSB_T(ko,en,vars):en;
  const explorer=document.getElementById('route-explorer');
  if(!explorer)return;
  const productButtons=[...explorer.querySelectorAll('[data-route-product]')];
@@ -13,10 +13,10 @@
   days.forEach(day=>{day.hidden=Number(day.dataset.routeDayPanel)!==index;day.classList.remove('route-flip-active');});
   const current=days.find(day=>!day.hidden);
   if(current&&!document.body.classList.contains('motion-paused')&&explorer.dataset.motionPaused!=='true'&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){void current.offsetWidth;current.classList.add('route-flip-active');}
-  if(announce){const active=days.find(day=>!day.hidden);const count=active.querySelectorAll('.route-node').length;status.textContent=english?`${panel.querySelector('h3').textContent}, day ${index+1}: ${active.querySelector('h4').textContent}, ${count} stops and transfers`:`${panel.querySelector('h3').textContent}, ${index+1}일차: ${active.querySelector('h4').textContent} ${count}개 방문·이동 단계`;}
+  if(announce){const active=days.find(day=>!day.hidden);const count=active.querySelectorAll('.route-node').length;status.textContent=T('{name}, {day}일차: {place} {count}개 방문·이동 단계','{name}, day {day}: {place}, {count} stops and transfers',{name:panel.querySelector('h3').textContent,day:index+1,place:active.querySelector('h4').textContent,count});}
  }
  productButtons.forEach(button=>button.addEventListener('click',()=>{
-  productButtons.forEach(other=>{other.setAttribute('aria-pressed',String(other===button));const state=other.querySelector('.route-selection');if(state)state.textContent=english?(other===button?'Selected':'View itinerary'):(other===button?'선택됨':'일정 보기');});
+  productButtons.forEach(other=>{other.setAttribute('aria-pressed',String(other===button));const state=other.querySelector('.route-selection');if(state)state.textContent=other===button?T('선택됨','Selected'):T('일정 보기','View itinerary');});
   panels.forEach(panel=>panel.hidden=panel.dataset.routePanel!==button.dataset.routeProduct);
   const active=panels.find(panel=>!panel.hidden);showDay(active,0);
  }));

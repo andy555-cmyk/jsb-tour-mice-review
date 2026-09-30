@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>釜山を拠点とする旅行・国際会議・企業イベント | JSB TOUR &amp; MICE</title><meta content="釜山を拠点とする旅行・国際会議・展示会の専門企業 JSB TOUR &amp; MICE。旅行商品とオーダーメイドのイベントプログラムをご覧ください" name="description"/><meta content="#0a0a0a" name="theme-color"/><meta content="釜山を拠点とする旅行・国際会議・企業イベント | JSB TOUR &amp; MICE" property="og:title"/><meta content="website" property="og:type"/><meta content="釜山を拠点とする国際会議・企業イベント・オーダーメイド旅行の専門企業" property="og:description"/><link href="../styles.css?v=0ea4a858b4" rel="stylesheet"/><style>
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    padding:140px 48px 100px;overflow:hidden;background:#0a0a0a;
+  }
+  .hero-bg{position:absolute;inset:0;pointer-events:none}
+  .hero-bg::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(50% 70% at 85% 20%, rgba(225,6,0,.32), transparent 60%),
+      radial-gradient(40% 60% at 10% 80%, rgba(225,6,0,.18), transparent 60%),
+      radial-gradient(60% 80% at 50% 50%, #181818 0%, #0a0a0a 100%);
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:80px 80px;
+    mask-image:radial-gradient(ellipse at center,#000 30%, transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse at center,#000 30%, transparent 75%);
+  }
+  .hero-bg .orb{
+    position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;
+    transition:transform .4s cubic-bezier(.16,.84,.44,1);
+  }
+  .hero-bg .orb-1{width:340px;height:340px;background:rgba(225,6,0,.5);top:18%;right:8%;animation:float 8s ease-in-out infinite}
+  .hero-bg .orb-2{width:240px;height:240px;background:rgba(138,0,0,.5);bottom:12%;left:12%;animation:float 6s ease-in-out infinite reverse}
+  .hero-bg .orb-3{width:160px;height:160px;background:rgba(255,45,45,.4);top:50%;left:50%;animation:float-slow 10s ease-in-out infinite}
+
+  /* Animated grid lines */
+  .hero-grid-anim{
+    position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background:
+      linear-gradient(90deg,transparent 49%,rgba(225,6,0,.15) 50%,transparent 51%) center/100px 100%,
+      linear-gradient(0deg,transparent 49%,rgba(225,6,0,.15) 50%,transparent 51%) center/100% 100px;
+    mask-image:radial-gradient(ellipse at center,#000 0%, transparent 60%);
+    -webkit-mask-image:radial-gradient(ellipse at center,#000 0%, transparent 60%);
+    animation:gridShift 14s linear infinite;
+  }
+  @keyframes gridShift{
+    0%{background-position:0 0,0 0}
+    100%{background-position:100px 100px,100px 100px}
+  }
+
+  .hero-inner{
+    position:relative;max-width:1280px;margin:0 auto;width:100%;
+    display:grid;grid-template-columns:1.3fr .7fr;gap:60px;align-items:center;z-index:2;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(48px,7.5vw,118px);font-weight:900;
+    line-height:.92;letter-spacing:-3px;text-transform:uppercase;
+  }
+  .hero h1 .line2{display:block}
+  .hero h1 em{
+    font-family:var(--font-serif);color:var(--red-2);font-style:italic;font-weight:700;
+    letter-spacing:-1px;text-transform:none;
+  }
+  .hero h1 .stroke{-webkit-text-stroke:1.5px #fff;color:transparent}
+  .hero p.lead{margin-top:32px;max-width:540px;color:var(--ink-dim);font-size:17px;line-height:1.75}
+  .hero-actions{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
+
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:72px;max-width:560px}
+  .stat{border-top:2px solid var(--line);padding-top:18px;position:relative}
+  .stat::before{content:"";position:absolute;top:-2px;left:0;width:30px;height:2px;background:var(--red)}
+  .stat b{font-family:var(--font-display);font-size:46px;color:#fff;letter-spacing:1px;display:block;line-height:1;font-weight:900}
+  .stat b span{color:var(--red)}
+  .stat small{color:var(--ink-dim);font-size:11px;letter-spacing:2px;text-transform:uppercase;display:block;margin-top:10px}
+
+  /* HERO CARD */
+  .hero-card-wrap{perspective:1500px}
+  .hero-card{
+    position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;
+    background:linear-gradient(135deg,#2a0a1a 0%,#0a0a0a 60%,#3a0a0a 100%);
+    box-shadow:0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(225,6,0,.15) inset;
+    transform:perspective(1200px) rotateY(-4deg) rotateX(2deg);
+    transition:transform .5s var(--easing), box-shadow .5s var(--easing);
+  }
+  .hero-card .photo-layer{
+    position:absolute;inset:0;z-index:0;
+    background-image:var(--img);background-size:cover;background-position:center;
+    filter:saturate(.85) contrast(1.05);
+  }
+  .hero-card::before{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(225,6,0,.55), transparent 50%),
+      radial-gradient(circle at 70% 80%, rgba(255,45,45,.3), transparent 50%),
+      linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.85) 100%);
+  }
+  .hero-card::after{
+    content:"";position:absolute;inset:0;z-index:2;
+    background-image:radial-gradient(circle at 50% 50%, rgba(255,255,255,.06) 1px, transparent 1.5px);
+    background-size:30px 30px;
+    mask-image:linear-gradient(180deg,#000 30%,transparent);
+    -webkit-mask-image:linear-gradient(180deg,#000 30%,transparent);
+  }
+  .hero-card svg.skyline, .hero-card .city-art, .hero-card .badge, .hero-card .badge-num, .hero-card .caption, .hero-card .corner-deco{z-index:3}
+  .hero-card svg.skyline{
+    position:absolute;left:0;right:0;bottom:24%;width:100%;opacity:.3;
+    filter:drop-shadow(0 0 12px rgba(225,6,0,.4));
+  }
+  .hero-card .city-art{
+    position:absolute;left:0;right:0;bottom:35%;
+    font-family:var(--font-display);text-align:center;
+    color:rgba(255,255,255,.06);font-size:140px;font-weight:900;
+    letter-spacing:-4px;line-height:1;text-transform:uppercase;z-index:1;
+  }
+  .hero-card .badge{
+    position:absolute;top:24px;left:24px;background:var(--red);color:#fff;
+    padding:8px 16px;border-radius:6px;
+    font-family:var(--font-display);font-size:11px;font-weight:900;letter-spacing:2px;z-index:3;
+  }
+  .hero-card .badge-num{
+    position:absolute;top:24px;right:24px;
+    font-family:var(--font-display);color:rgba(255,255,255,.4);
+    font-size:48px;font-weight:900;letter-spacing:-2px;line-height:1;z-index:3;
+  }
+  .hero-card .caption{position:absolute;left:28px;right:28px;bottom:28px;color:#fff;z-index:3}
+  .hero-card .caption .sub{
+    font-family:var(--font-display);color:var(--red-2);
+    font-size:11px;letter-spacing:3px;margin-bottom:10px;text-transform:uppercase;
+  }
+  .hero-card .caption h3{
+    font-family:var(--font-display);font-size:24px;font-weight:900;
+    letter-spacing:-.5px;line-height:1.1;margin-bottom:8px;text-transform:uppercase;
+  }
+  .hero-card .caption p{font-size:13px;color:#bbb;line-height:1.5}
+  .hero-card .meta-row{
+    display:flex;gap:14px;margin-top:16px;padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.6);
+    letter-spacing:1px;text-transform:uppercase;
+  }
+  .hero-card .corner-deco{
+    position:absolute;width:32px;height:32px;border-color:var(--red-2);
+  }
+  .hero-card .corner-tl{top:8px;left:8px;border-top:2px solid;border-left:2px solid;border-top-left-radius:8px}
+  .hero-card .corner-br{bottom:8px;right:8px;border-bottom:2px solid;border-right:2px solid;border-bottom-right-radius:8px}
+
+  /* MARQUEE */
+  .marquee{position:absolute;left:0;right:0;bottom:0;overflow:hidden;border-top:1px solid var(--line);background:#050505}
+  .marquee-track{
+    display:flex;gap:48px;padding:20px 0;white-space:nowrap;
+    animation:scroll-marquee 28s linear infinite;
+    font-family:var(--font-display);font-size:22px;letter-spacing:4px;color:#444;text-transform:uppercase;
+  }
+  .marquee-track span{display:inline-flex;align-items:center;gap:48px}
+  .marquee-track span::after{content:"●";color:var(--red);margin-left:48px;font-size:14px}
+
+  /* ===== SCROLLING TICKER (alternative) ===== */
+  .ticker-strip{
+    background:linear-gradient(90deg,#0a0a0a,#1a0000,#0a0a0a);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;padding:18px 0;position:relative;
+  }
+  .ticker-track{
+    display:flex;gap:60px;white-space:nowrap;
+    animation:scroll-marquee 22s linear infinite;
+    font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:#fff;text-transform:uppercase;
+  }
+  .ticker-track span{display:inline-flex;align-items:center;gap:60px}
+  .ticker-track .red{color:var(--red-2)}
+
+  /* ===== SERVICES ===== */
+  .services{background:#0d0d0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .svc-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  }
+  .svc{
+    background:#0d0d0d;padding:44px 32px;min-height:320px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    cursor:pointer;position:relative;overflow:hidden;color:inherit;
+    transform-style:preserve-3d;
+  }
+  .svc::before{
+    content:"";position:absolute;inset:auto 0 0 0;height:3px;
+    background:var(--red);transform:scaleX(0);transform-origin:left;transition:.4s var(--easing);
+  }
+  .svc::after{
+    content:"";position:absolute;top:-50%;right:-30%;width:240px;height:240px;
+    border-radius:50%;background:radial-gradient(circle,rgba(225,6,0,.22),transparent 60%);
+    opacity:0;transition:.5s;
+  }
+  .svc:hover{background:#050505}
+  .svc:hover::before{transform:scaleX(1)}
+  .svc:hover::after{opacity:1}
+  .svc-num{font-family:var(--font-display);color:#333;font-size:42px;letter-spacing:1px;transition:.3s;font-weight:900;line-height:1}
+  .svc:hover .svc-num{color:var(--red)}
+  .svc-icon{
+    width:52px;height:52px;border:1px solid var(--line);border-radius:14px;
+    display:grid;place-items:center;margin-top:20px;transition:.4s var(--easing);
+    background:#0a0a0a;
+  }
+  .svc:hover .svc-icon{background:var(--red);border-color:var(--red);transform:rotate(-8deg) scale(1.06)}
+  .svc-icon svg{width:24px;height:24px;stroke:var(--ink-dim);transition:.3s}
+  .svc:hover .svc-icon svg{stroke:#fff}
+  .svc h3{font-family:var(--font-display);font-size:22px;font-weight:900;margin:24px 0 12px;letter-spacing:-.3px;color:#fff;text-transform:uppercase}
+  .svc p{color:var(--ink-dim);font-size:13px;line-height:1.7}
+  .svc .arrow{margin-top:28px;font-size:12px;color:var(--ink-dim);transition:.3s var(--easing);display:inline-flex;align-items:center;gap:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-family:var(--font-display)}
+  .svc:hover .arrow{color:var(--red-2);gap:14px}
+  .svc .arrow-line{width:24px;height:1px;background:currentColor;transition:.3s var(--easing)}
+  .svc:hover .arrow-line{width:32px}
+
+  /* ===== BLOG ===== */
+  .blog{background:#0a0a0a}
+  .featured{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;margin-bottom:64px;align-items:center}
+  .featured-img{
+    position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/11;
+    background:linear-gradient(135deg,#3a1a1a 0%,#0a0a0a 60%,#5c0a0a 100%) center/cover;
+    background-image:var(--img),linear-gradient(135deg,#3a1a1a 0%,#0a0a0a 60%,#5c0a0a 100%);
+    background-size:cover;background-position:center;
+    box-shadow:0 30px 70px rgba(0,0,0,.5);
+    transition:transform .6s var(--easing);
+  }
+  .featured-img:hover{transform:scale(1.02)}
+  .featured-img::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(225,6,0,.35), transparent 55%),
+      linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.75));
+  }
+  .featured-img::after{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1.5px);
+    background-size:30px 30px;
+    mask-image:linear-gradient(180deg,#000,transparent);
+    -webkit-mask-image:linear-gradient(180deg,#000,transparent);
+  }
+  .featured-img .big-text{
+    position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+    font-family:var(--font-display);text-align:center;
+    color:rgba(255,255,255,.05);font-size:120px;font-weight:900;
+    letter-spacing:-3px;line-height:.9;text-transform:uppercase;
+  }
+  .featured-img .pill{
+    position:absolute;top:20px;left:20px;background:var(--red);color:#fff;
+    padding:10px 18px;border-radius:999px;
+    font-family:var(--font-display);font-size:11px;font-weight:900;letter-spacing:2px;z-index:2;
+  }
+  .featured-img .read-time{
+    position:absolute;top:20px;right:20px;
+    padding:8px 14px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;
+    font-size:11px;letter-spacing:1px;
+  }
+  .featured-meta{display:flex;gap:14px;align-items:center;color:var(--ink-dim);font-size:12px;margin-bottom:18px;letter-spacing:1px;text-transform:uppercase}
+  .featured-meta b{color:var(--red-2);font-family:var(--font-display);letter-spacing:2px}
+  .featured h3{font-family:var(--font-display);font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:20px;text-transform:uppercase}
+  .featured h3 a:hover{color:var(--red-2)}
+  .featured .excerpt{color:var(--ink-dim);font-size:15px;line-height:1.75;margin-bottom:28px}
+  .author{display:flex;align-items:center;gap:14px}
+  .avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--red-deep));display:grid;place-items:center;font-family:var(--font-display);font-weight:900;color:#fff;letter-spacing:1px;font-size:14px}
+  .author b{display:block;font-size:14px;font-weight:700}
+  .author small{display:block;color:var(--ink-dim);font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+
+  .post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .post{background:#0d0d0d;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;display:block;color:inherit;transition:transform .5s var(--easing),border-color .3s,box-shadow .4s}
+  .post:hover{border-color:rgba(225,6,0,.4);box-shadow:0 30px 60px rgba(225,6,0,.12)}
+  .post-thumb{aspect-ratio:16/10;position:relative;overflow:hidden}
+  .post-thumb .cat{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);color:var(--red-2);padding:6px 12px;border-radius:6px;font-family:var(--font-display);font-size:10px;font-weight:900;letter-spacing:2px;border:1px solid rgba(225,6,0,.35);z-index:3}
+  .post-body{padding:26px 24px}
+  .post-meta{display:flex;gap:10px;color:var(--ink-dim);font-size:11px;margin-bottom:14px;letter-spacing:1px;text-transform:uppercase}
+  .post-meta i{width:4px;height:4px;border-radius:50%;background:var(--red);display:inline-block;margin-right:8px;vertical-align:middle}
+  .post h4{font-family:var(--font-display);font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.25;margin-bottom:12px;color:#fff;text-transform:uppercase}
+  .post:hover h4{color:var(--red-2)}
+  .post p{color:var(--ink-dim);font-size:13px;line-height:1.65}
+  .post-foot{display:flex;justify-content:space-between;align-items:center;padding:0 24px 22px;color:var(--ink-dim);font-size:11px;letter-spacing:1px}
+  .post-foot .read{color:#fff;font-weight:700;font-family:var(--font-display);letter-spacing:2px}
+
+  /* ===== DESTINATIONS ===== */
+  .dest{background:#050505;border-top:1px solid var(--line)}
+  .dest-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:18px}
+  .dest-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;background:#111;transition:transform .5s var(--easing);display:block;color:inherit}
+  .dest-card.large{grid-row:span 2}
+  .dest-card .info{position:absolute;left:24px;right:24px;bottom:24px;z-index:3;color:#fff}
+  .dest-card .country{font-family:var(--font-display);color:var(--red-2);font-size:13px;letter-spacing:3px;margin-bottom:6px;font-weight:700}
+  .dest-card h4{font-family:var(--font-display);font-size:22px;font-weight:900;letter-spacing:-.5px;line-height:1.1;text-transform:uppercase}
+  .dest-card.large h4{font-size:36px;line-height:1}
+  .dest-card .arrow-corner{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;color:#fff;font-size:18px;transition:.3s var(--easing);z-index:3}
+  .dest-card:hover .arrow-corner{background:var(--red);border-color:var(--red);transform:rotate(-45deg) scale(1.15)}
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner{
+    padding:120px 48px;
+    background:
+      radial-gradient(50% 100% at 0% 50%, rgba(225,6,0,.35), transparent 60%),
+      radial-gradient(40% 80% at 100% 50%, rgba(138,0,0,.25), transparent 60%),
+      linear-gradient(135deg,#1a0000 0%,#000 100%);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    position:relative;overflow:hidden;
+  }
+  .cta-banner::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at center,#000 30%,transparent 70%);
+    -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 70%);
+  }
+  .cta-inner{display:grid;grid-template-columns:1.3fr .7fr;gap:60px;align-items:center;max-width:1280px;margin:0 auto;position:relative;z-index:2}
+  .cta-banner h2{font-family:var(--font-display);font-size:clamp(36px,4.8vw,64px);font-weight:900;letter-spacing:-1.5px;line-height:1;text-transform:uppercase}
+  .cta-banner h2 em{font-family:var(--font-serif);color:var(--red-2);font-style:italic;text-decoration:underline;text-decoration-color:rgba(225,6,0,.5);text-underline-offset:6px;text-transform:none}
+  .cta-banner p{color:var(--ink-dim);margin-top:22px;font-size:16px;line-height:1.7;max-width:480px}
+  .cta-form{background:rgba(10,10,10,.7);border:1px solid var(--line-2);border-radius:20px;padding:32px;backdrop-filter:blur(12px)}
+  .cta-form label{display:block;font-family:var(--font-display);font-size:11px;color:var(--ink-dim);margin:18px 0 8px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+  .cta-form label:first-of-type{margin-top:0}
+  .cta-form input,.cta-form select{width:100%;background:#000;border:1px solid var(--line);color:#fff;padding:14px 16px;border-radius:10px;font-size:14px;font-family:inherit;outline:none;transition:.2s}
+  .cta-form input:focus,.cta-form select:focus{border-color:var(--red);background:#0a0000}
+  .cta-form button{width:100%;margin-top:24px;background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;border:0;padding:16px;border-radius:10px;font-weight:800;cursor:pointer;letter-spacing:2px;transition:.25s var(--easing);font-family:var(--font-display);font-size:14px;text-transform:uppercase}
+  .cta-form button:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(225,6,0,.4)}
+
+  @media (max-width:1024px){
+    .hero{padding:120px 24px 80px}
+    .hero-inner{grid-template-columns:1fr;gap:48px}
+    .hero-card{aspect-ratio:16/12;transform:none;max-width:480px;margin:0 auto;width:100%}
+    .hero-stats{gap:18px}
+    .stat b{font-size:32px}
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .featured{grid-template-columns:1fr;gap:32px}
+    .featured h3{font-size:28px}
+    .post-grid{grid-template-columns:1fr}
+    .dest-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px)}
+    .dest-card.large{grid-column:span 2;grid-row:span 1}
+    .cta-banner{padding:80px 24px}
+    .cta-inner{grid-template-columns:1fr;gap:32px}
+  }
+</style><link href="../polish.css?v=ec5bcdc517" rel="stylesheet"/><link href="../editorial.css?v=c3605fa251" rel="stylesheet"/><link href="../atmosphere.css?v=b880046542" rel="stylesheet"/><link href="../motion.css?v=c494edb2f0" rel="stylesheet"/><link href="../concepts.css?v=841b780177" rel="stylesheet"/><link href="../travel/airport.css?v=13c423e288" rel="stylesheet"/><link href="../index.html" hreflang="ko" rel="alternate"/><link href="../en/index.html" hreflang="en" rel="alternate"/><link href="../fr/index.html" hreflang="fr" rel="alternate"/><link href="../es/index.html" hreflang="es" rel="alternate"/><link href="../zh/index.html" hreflang="zh-CN" rel="alternate"/><link href="index.html" hreflang="ja" rel="alternate"/><link href="../en/index.html" hreflang="x-default" rel="alternate"/><link href="../language.css?v=0bcac10c37" rel="stylesheet"/><link href="https://www.jsbtour.com/ja/" rel="canonical"/><meta content="https://www.jsbtour.com/ja/" property="og:url"/><meta content="https://www.jsbtour.com/assets/og-image.jpg" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="ja_JP" property="og:locale"/></head><body><a class="skip" href="#main">本文へスキップ</a><header class="nav"><a aria-label="JSBホームページ" class="logo" href="index.html"><img alt="JSB TOUR &amp; MICE" class="logo-img" height="286" src="../logo.png?v=691401bd10" width="486"/></a><nav aria-label="メインメニュー"><ul><li><a class="wayfinding-link" href="about.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10v1"></path></svg><span class="wf-label">会社紹介<span class="nav-ko">About</span></span><span aria-hidden="true" class="wf-arrow">→</span></a></li><li><a class="wayfinding-link" href="services.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><path d="M4 21V5h16v16M8 9h2m4 0h2M8 13h2m4 0h2M10 21v-4h4v4"></path></svg><span class="wf-label">サービス<span class="nav-ko">Services</span></span><span aria-hidden="true" class="wf-arrow">→</span></a></li><li><a class="wayfinding-link" href="destinations.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><path d="m3 15 6 1 10-10 2 1-7 11-9 1zM3 21h18M9 11 5 6l2-1 6 3"></path></svg><span class="wf-label">旅行商品<span class="nav-ko">Tours</span></span><span aria-hidden="true" class="wf-arrow">→</span></a></li><li><a class="wayfinding-link" href="contact.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10v1"></path></svg><span class="wf-label">お問い合わせ<span class="nav-ko">Contact</span></span><span aria-hidden="true" class="wf-arrow">→</span></a></li></ul></nav><a aria-label="プロジェクトのお問い合わせ" class="cta" href="contact.html">プロジェクトのお問い合わせ</a><details class="lang-menu"><summary aria-label="言語を選択">日本語</summary><ul><li><a href="../index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../en/index.html" hreflang="en" lang="en">English</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li><li><a href="../zh/index.html" hreflang="zh-CN" lang="zh-CN">简体中文</a></li><li><a aria-current="true" href="index.html" hreflang="ja" lang="ja">日本語</a></li></ul></details><button aria-controls="mm" aria-expanded="false" aria-label="メニューを開く" class="burger">☰</button></header><aside aria-label="モバイルメニュー" class="mobile-menu" id="mm" inert=""><button aria-label="メニューを閉じる" class="mobile-close">×</button><ul><li><a class="wayfinding-link" href="index.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10v1"></path></svg><span class="wf-label">Home</span><span aria-hidden="true" class="wf-arrow">→</span></a></li><li><a class="wayfinding-link" href="about.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10v1"></path></svg><span class="wf-label">会社紹介<span class="nav-ko">About</span></span><span aria-hidden="true" class="wf-arrow">→</span></a></li><li><a class="wayfinding-link" href="services.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><path d="M4 21V5h16v16M8 9h2m4 0h2M8 13h2m4 0h2M10 21v-4h4v4"></path></svg><span class="wf-label">サービス<span class="nav-ko">Services</span></span><span aria-hidden="true" class="wf-arrow">→</span></a></li><li><a class="wayfinding-link" href="destinations.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><path d="m3 15 6 1 10-10 2 1-7 11-9 1zM3 21h18M9 11 5 6l2-1 6 3"></path></svg><span class="wf-label">旅行商品<span class="nav-ko">Tours</span></span><span aria-hidden="true" class="wf-arrow">→</span></a></li><li><a class="wayfinding-link" href="contact.html"><svg aria-hidden="true" class="wf-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10v1"></path></svg><span class="wf-label">お問い合わせ<span class="nav-ko">Contact</span></span><span aria-hidden="true" class="wf-arrow">→</span></a></li><li class="lang-item"><ul aria-label="言語を選択" class="lang-list"><li><a href="../index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../en/index.html" hreflang="en" lang="en">English</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li><li><a href="../zh/index.html" hreflang="zh-CN" lang="zh-CN">简体中文</a></li><li><a aria-current="true" href="index.html" hreflang="ja" lang="ja">日本語</a></li></ul></li></ul></aside><main id="main"><section class="hero">
+<div class="hero-bg">
+<div class="orb orb-1" data-parallax="30"></div>
+<div class="orb orb-2" data-parallax="-25"></div>
+<div class="orb orb-3" data-parallax="40"></div>
+</div>
+<div class="hero-grid-anim"></div>
+<div class="hero-inner">
+<div class="reveal-stagger">
+<span class="tag">MICE · INCENTIVE · GLOBAL TOUR</span>
+<h1><span class="hero-kicker">JSB TOUR &amp; MICE · 釜山, 2018</span><span class="display-line concrete-title">釜山で準備する</span><span class="display-line concrete-title"><em>旅と</em>国際イベント</span></h1>
+<p class="lead">国際会議・展示会・企業イベントと韓国訪問の旅。参加者案内から交通・宿泊・地域観光まで、必要な業務と日程をともに準備します</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#company-intro">JSB会社紹介 ↓</a><a class="btn btn-ghost" href="travel/index.html">旅行商品を見る ↗</a></div>
+<div class="hero-stats"><div class="stat"><b>2018</b><small>SINCE · 設立</small></div><div class="stat"><b>BUSAN</b><small>BASED IN · 釜山</small></div><div class="stat"><b>MICE</b><small>TOUR &amp; EXPERIENCE</small></div></div>
+</div>
+<div class="hero-card-wrap reveal">
+<div class="hero-card" data-hero-card="" style="--img:url('../assets/event-networking.webp')">
+<div class="photo-layer"></div>
+<span class="corner-deco corner-tl"></span>
+<span class="corner-deco corner-br"></span>
+<span class="badge">MEETINGS &amp; EVENTS</span>
+<span class="badge-num">01</span>
+<div class="caption"><div class="sub">ALL KOREA MICE NETWORKING NIGHT</div><h3>会議とイベント、<br/>その現場で</h3><p>会社案内に収録されたネットワーキングイベントの現場</p><a class="hero-card-link" href="services.html">イベントサービスを詳しく見る ↗</a></div>
+</div>
+</div>
+</div>
+<div class="marquee">
+<div class="marquee-track"><span>BUSAN</span><span>ULSAN</span><span>SEOUL</span><span>GYEONGJU</span><span>TOURISM</span><span>MICE</span><span>BUSAN</span><span>ULSAN</span><span>SEOUL</span><span>GYEONGJU</span><span>TOURISM</span><span>MICE</span></div>
+</div>
+</section><div class="ticker-strip"><div class="focus-strip"><span>TOURISM</span><span>MICE</span><span>INCENTIVE</span><span>LOCAL EXPERIENCE</span></div></div><section aria-labelledby="company-intro-title" class="home-company" id="company-intro"><div class="home-company-inner"><div><span class="eyebrow">ABOUT JSB · 会社紹介</span><h2 id="company-intro-title">国際イベントと韓国の旅を<br/>ともに準備する会社</h2><p class="home-company-name">JSB Tour&amp;Mice Co., Ltd</p><p class="home-company-description">2018年に釜山で設立されたJSBは、国際会議・展示会・企業イベントとオーダーメイド旅行を企画します。参加者案内から交通・宿泊、イベント後の地域観光まで、必要な業務をともに準備します</p><div class="home-company-facts"><span>2018年設立</span><span>釜山拠点</span><span>旅行 · イベント企画</span></div><a class="btn btn-ghost" href="about.html">会社紹介と主な沿革を見る ↗</a></div><figure><img alt="JSBオフィスの入口と会社の看板" height="1076" loading="lazy" src="../assets/about-office.webp" width="1461"/><figcaption>JSBオフィス · 会社案内収録写真</figcaption></figure></div></section><section class="services">
+<div class="container">
+<div class="sec-head reveal">
+<div>
+<span class="eyebrow">OUR EXPERTISE</span>
+<h2>国際会議から<br/><em>団体旅行まで</em></h2>
+</div>
+<p>会議企画、参加者案内、団体旅行、地域観光。必要な項目を選んで、運営範囲をご相談いただけます</p>
+</div>
+<div class="svc-grid reveal-stagger">
+<a class="svc" href="services.html#conference">
+<div>
+<span class="svc-num">01</span>
+<div class="svc-icon"><svg fill="none" stroke-linecap="round" stroke-width="1.6" viewbox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"></path><path d="M9 21v-7h6v7"></path></svg></div>
+<h3>国際会議 · 企業イベント</h3>
+<p>国際会議や企業イベントの目的に合わせて、企画と現場運営をつなぎます。参加者がイベントに集中できるよう、必要な準備と現場業務を担います</p>
+</div>
+<div class="arrow"><span class="arrow-line"></span>EXPLORE</div>
+</a>
+<a class="svc" href="services.html#incentive">
+<div>
+<span class="svc-num">02</span>
+<div class="svc-icon"><svg fill="none" stroke-linecap="round" stroke-width="1.6" viewbox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"></path></svg></div>
+<h3>インセンティブ · オーダーメイド旅行</h3>
+<p>企業・団体の目的とメンバーに合った旅をご提案します。地域の文化や体験、移動と宿泊をひとつの日程にまとめます</p>
+</div>
+<div class="arrow"><span class="arrow-line"></span>EXPLORE</div>
+</a>
+<a class="svc" href="services.html#exhibition">
+<div>
+<span class="svc-num">03</span>
+<div class="svc-icon"><svg fill="none" stroke-linecap="round" stroke-width="1.6" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<h3>展示会 · 博覧会</h3>
+<p>展示会や博覧会、地域イベントの特性に合わせてプログラムを企画し、現場を運営します。主催機関と参加者をつなぐ体験をつくります</p>
+</div>
+<div class="arrow"><span class="arrow-line"></span>EXPLORE</div>
+</a>
+<a class="svc" href="services.html#tourism">
+<div>
+<span class="svc-num">04</span>
+<div class="svc-icon"><svg fill="none" stroke-linecap="round" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21v-2a8 8 0 0116 0v2"></path></svg></div>
+<h3>韓国観光 · ウェルネス</h3>
+<p>釜山を中心に、地域の文化と自然をつなぐ旅を構成します。観光と休息を組み合わせたプログラムから海外からのお客様向けの日程まで、ともに準備します</p>
+</div>
+<div class="arrow"><span class="arrow-line"></span>EXPLORE</div>
+</a>
+</div>
+</div>
+</section><section class="moments" id="moments"><div class="container"><div class="sec-head"><div><span class="eyebrow">MOMENTS, TOGETHER</span><h2>日程表には残らない、<br/><em>ともに過ごした場面</em></h2></div><div><p>JSBの会社案内に収められた旅行とイベント<br/>写真を押して、その日の現場をご覧ください</p><div class="moment-controls"><button aria-label="前の現場写真" data-slide="-1" type="button">←</button><span class="moment-count">01 / 05</span><button aria-label="次の現場写真" data-slide="1" type="button">→</button><button aria-pressed="true" class="moment-autoplay" type="button">スライドショーを停止 Ⅱ</button></div></div></div><div aria-label="現場写真集。左右にスワイプするか、写真を押して拡大してください" class="moment-rail" tabindex="0"><article class="moment-card"><button aria-label="NURETH-21国際学術大会ポストツアーの写真を拡大表示" class="moment-open" data-photo="0" type="button"><img alt="NURETH-21国際学術大会ポストツアーの現場" height="650" loading="lazy" src="../assets/tour-yacht.webp" width="900"/><span aria-hidden="true" class="moment-zoom">↗</span></button><div class="moment-copy luggage-label"><div class="luggage-meta"><b>BUSAN</b><span>2025 / 現場記録</span></div><small>01 / JSB ARCHIVE</small><h3>NURETH-21国際学術大会ポストツアー</h3><p>広安大橋の夜景に出会うヨット体験。学術大会の後に続く旅のひとコマです</p><span class="moment-source">英語版会社案内 12ページ</span><div aria-hidden="true" class="luggage-stub"><i></i><span>JSB · PHOTO ARCHIVE</span></div></div></article><article class="moment-card"><button aria-label="マレーシアのインフルエンサー招待ファムトリップの写真を拡大表示" class="moment-open" data-photo="1" type="button"><img alt="マレーシアのインフルエンサー招待ファムトリップの現場" height="650" loading="lazy" src="../assets/tour-coast.webp" width="900"/><span aria-hidden="true" class="moment-zoom">↗</span></button><div class="moment-copy luggage-label"><div class="luggage-meta"><b>BUSAN</b><span>2024 / 現場記録</span></div><small>02 / JSB ARCHIVE</small><h3>マレーシアのインフルエンサー招待ファムトリップ</h3><p>釜山の海雲台を訪れた参加者たち。地域の魅力を直接体験する観光の現場です</p><span class="moment-source">韓国語版 10ページ · 英語版 13ページ</span><div aria-hidden="true" class="luggage-stub"><i></i><span>JSB · PHOTO ARCHIVE</span></div></div></article><article class="moment-card"><button aria-label="韓国テーマ観光展ファムトリップの写真を拡大表示" class="moment-open" data-photo="2" type="button"><img alt="韓国テーマ観光展ファムトリップの現場" height="650" loading="lazy" src="../assets/tour-food.webp" width="900"/><span aria-hidden="true" class="moment-zoom">↗</span></button><div class="moment-copy luggage-label"><div class="luggage-meta"><b>BUSAN</b><span>2024 / 現場記録</span></div><small>03 / JSB ARCHIVE</small><h3>韓国テーマ観光展ファムトリップ</h3><p>自分で作って味わう料理体験。観光地めぐりにとどまらず、韓国の食を体験する時間です</p><span class="moment-source">韓国語版 11ページ · 英語版 13ページ</span><div aria-hidden="true" class="luggage-stub"><i></i><span>JSB · PHOTO ARCHIVE</span></div></div></article><article class="moment-card"><button aria-label="シンガポールMICEロードショーの写真を拡大表示" class="moment-open" data-photo="3" type="button"><img alt="シンガポールMICEロードショーの現場" height="650" loading="lazy" src="../assets/event-networking.webp" width="900"/><span aria-hidden="true" class="moment-zoom">↗</span></button><div class="moment-copy luggage-label"><div class="luggage-meta"><b>SINGAPORE</b><span>2022 / 現場記録</span></div><small>04 / JSB ARCHIVE</small><h3>シンガポールMICEロードショー</h3><p>ALL KOREA MICE NETWORKING NIGHT。観光・イベント関係者が集うネットワーキングの現場です</p><span class="moment-source">韓国語版 13ページ · 英語版 22ページ</span><div aria-hidden="true" class="luggage-stub"><i></i><span>JSB · PHOTO ARCHIVE</span></div></div></article><article class="moment-card"><button aria-label="国立海洋博物館リニューアル開館式の写真を拡大表示" class="moment-open" data-photo="4" type="button"><img alt="国立海洋博物館リニューアル開館式の現場" height="650" loading="lazy" src="../assets/event-exhibition.webp" width="900"/><span aria-hidden="true" class="moment-zoom">↗</span></button><div class="moment-copy luggage-label"><div class="luggage-meta"><b>BUSAN</b><span>2023 / 現場記録</span></div><small>05 / JSB ARCHIVE</small><h3>国立海洋博物館リニューアル開館式</h3><p>常設展示室の新たな始まりを告げる開館式の現場です</p><span class="moment-source">英語版会社案内 21ページ</span><div aria-hidden="true" class="luggage-stub"><i></i><span>JSB · PHOTO ARCHIVE</span></div></div></article></div><div aria-hidden="true" class="moment-progress"><i></i></div><p class="moment-hint">横にスワイプしてください <span>DRAG / SWIPE →</span></p></div></section><section class="blog" id="featured-tours"><div class="container"><div class="sec-head"><div><span class="eyebrow">SIGNATURE JOURNEYS</span><h2>釜山・蔚山・慶尚道の<br/><em>オーダーメイド旅行プラン</em></h2></div><p>旅行地域と日ごとの日程をご確認ください。確定出発日と料金は、人数・宿泊などの条件に応じてご相談後にご案内します</p></div><div id="home-products"><div class="tour-grid"><a class="tour-card" data-category="wellness" href="tour-ulsan-busan.html"><div class="tour-photo"><img alt="蔚山・釜山ブレジャーヒーリングツアーの紹介写真" height="600" loading="lazy" src="../assets/tour-coast.webp" width="800"/><span class="tour-chip">ヒーリング · 団体旅行</span></div><div class="tour-copy"><small>ULSAN &amp; BUSAN</small><p class="source-caption">釜山・海雲台ビーチ · 団体旅行の参考写真</p><h3>蔚山・釜山ブレジャーヒーリングツアー</h3><p>大雲山治癒の森と大王岩公園から始まり、釜山のヒンヨウル文化村・青沙浦・松亭へと続く4泊5日の日程です</p><div class="tour-bottom"><b>4泊5日 · 個別相談</b><span>詳しく ↗</span></div></div></a><a class="tour-card" data-category="wellness" href="tour-harmonize.html"><div class="tour-photo"><img alt="ハーモナイズツアーの紹介写真" height="600" loading="lazy" src="../assets/tour-culture.webp" width="800"/><span class="tour-chip">文化 · 休息</span></div><div class="tour-copy"><small>BUSAN &amp; GYEONGNAM</small><p class="source-caption">会社案内収録の団体旅行参考写真</p><h3>ハーモナイズツアー</h3><p>山清の修禅寺・東医宝鑑村、陜川の海印寺、河東のメアム製茶園と釜山の文化・海岸の名所をつなぐ4泊5日の日程です</p><div class="tour-bottom"><b>4泊5日 · 個別相談</b><span>詳しく ↗</span></div></div></a><a class="tour-card" data-category="culture" href="tour-gyeongbuk-heritage.html"><div class="tour-photo"><img alt="慶尚北道歴史・文化ツアーの紹介写真" height="600" loading="lazy" src="../assets/tour-heritage.webp" width="800"/><span class="tour-chip">歴史 · 文化</span></div><div class="tour-copy"><small>GYEONGBUK HERITAGE</small><p class="source-caption">慶州・仏国寺訪問 · 歴史文化観光の参考写真</p><h3>慶尚北道歴史・文化ツアー</h3><p>安東の河回村・陶山書院、高霊の池山洞古墳群、慶州の仏国寺・東宮と月池をめぐる6日間の日程です</p><div class="tour-bottom"><b>6日間 · 個別相談</b><span>詳しく ↗</span></div></div></a></div></div><a class="btn btn-ghost section-link" href="destinations.html">すべての旅行商品を見る ↗</a></div></section><section aria-labelledby="route-explorer-title" class="route-explorer airport-terminal" id="route-explorer"><div class="route-intro"><div><p class="eyebrow">JSB TRAVEL INFORMATION</p><h2 id="route-explorer-title">旅行案内モニター</h2></div><p>旅行を選んでから、ご覧になりたい日を選択してください<br/>提案日程の訪問順序であり、実際の航空運航情報ではありません</p></div><div aria-label="旅行案内 · INFORMATION · JSB TOUR &amp; MICE" class="airport-marquee"><div aria-hidden="true" class="airport-marquee-track"><span>旅行案内 · INFORMATION · JSB TOUR &amp; MICE</span><span>旅行案内 · INFORMATION · JSB TOUR &amp; MICE</span><span>旅行案内 · INFORMATION · JSB TOUR &amp; MICE</span></div></div><div class="airport-monitors"><div class="airport-monitor airport-board"><div class="airport-screen-heading"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 28 28"><path d="m3 16 7 1 6-5-10-2 2-2 12 1 4-4c2-2 4 0 2 2L14 20l-9-1-3 2-1-1 2-4Z"></path><path d="M3 24h23v2H3z"></path></svg><div><strong>旅行プログラム</strong><span>JOURNEY INFORMATION</span></div><b>JSB</b></div><div aria-hidden="true" class="route-board-labels"><span>番号</span><span>旅行地域</span><span>期間</span><span>選択</span></div><div aria-label="ルートを見る旅行を選択" class="route-product-buttons" role="group"><button aria-controls="route-panel-ulsan-busan" aria-pressed="true" data-route-product="ulsan-busan" type="button"><span aria-label="プログラム 01" class="route-program">01</span><span class="route-destination">蔚山 · 釜山</span><span class="route-duration">4泊5日</span><span aria-hidden="true" class="route-selection">選択中</span></button><button aria-controls="route-panel-gyeongbuk-heritage" aria-pressed="false" data-route-product="gyeongbuk-heritage" type="button"><span aria-label="プログラム 02" class="route-program">02</span><span class="route-destination">安東 · 高霊 · 慶州</span><span class="route-duration">6日間</span><span aria-hidden="true" class="route-selection">日程を見る</span></button><button aria-controls="route-panel-gyeongbuk-drama" aria-pressed="false" data-route-product="gyeongbuk-drama" type="button"><span aria-label="プログラム 03" class="route-program">03</span><span class="route-destination">聞慶 · 醴泉 · 浦項 · 慶州</span><span class="route-duration">5日間</span><span aria-hidden="true" class="route-selection">日程を見る</span></button><button aria-controls="route-panel-harmonize" aria-pressed="false" data-route-product="harmonize" type="button"><span aria-label="プログラム 04" class="route-program">04</span><span class="route-destination">山清 · 陜川 · 河東 · 釜山</span><span class="route-duration">4泊5日</span><span aria-hidden="true" class="route-selection">日程を見る</span></button></div><div class="airport-board-footer">01–04 · 旅行プログラム番号</div><a class="airport-ad" href="index.html#moments"><img alt="会社案内に収録された2022年シンガポールMICEロードショーの現場" loading="lazy" src="../assets/event-networking.webp"/><span><b>2022 シンガポールMICEロードショー</b><span>会社案内収録 · 現場を見る ↗</span></span></a><div class="airport-screen-footer"><span>01 | 旅行プログラム</span><span class="airport-clock-wrap">韓国時間 <time aria-live="off" class="airport-clock">--:--</time></span></div></div><div class="airport-monitor airport-route"><div class="airport-screen-heading"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 28 28"><path d="m3 16 7 1 6-5-10-2 2-2 12 1 4-4c2-2 4 0 2 2L14 20l-9-1-3 2-1-1 2-4Z"></path><path d="M3 24h23v2H3z"></path></svg><div><strong>日ごとの訪問案内</strong><span>DAILY ITINERARY</span></div><span class="airport-live">日程を見る</span></div><div class="route-product-panel" data-route-panel="ulsan-busan" id="route-panel-ulsan-busan"><div class="route-product-heading"><div><p>蔚山 · 釜山 · 4泊5日</p><h3>蔚山・釜山ブレジャーヒーリングツアー</h3></div><span aria-hidden="true" class="route-symbol">✳</span></div><div aria-label="蔚山・釜山ブレジャーヒーリングツアーの日を選択" class="route-day-buttons" role="group"><button aria-controls="route-day-ulsan-busan-0" aria-pressed="true" data-route-day="0" type="button"><span>DAY 01</span>1日目</button><button aria-controls="route-day-ulsan-busan-1" aria-pressed="false" data-route-day="1" type="button"><span>DAY 02</span>2日目</button><button aria-controls="route-day-ulsan-busan-2" aria-pressed="false" data-route-day="2" type="button"><span>DAY 03</span>3日目</button><button aria-controls="route-day-ulsan-busan-3" aria-pressed="false" data-route-day="3" type="button"><span>DAY 04</span>4日目</button><button aria-controls="route-day-ulsan-busan-4" aria-pressed="false" data-route-day="4" type="button"><span>DAY 05</span>5日目</button></div><section aria-label="1日目 蔚山の森と海" class="route-day-panel" data-route-day-panel="0" id="route-day-ulsan-busan-0"><div class="route-day-heading"><div><p>DAY 01 / 05</p><h4>蔚山の森と海</h4></div><span>訪問・移動 5ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="1日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">金海空港</span><span class="route-kind">移動</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">蔚山</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">国立大雲山治癒の森</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:3"><span aria-hidden="true" class="route-point">04</span><span class="route-place">大王岩公園・吊り橋</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:4"><span aria-hidden="true" class="route-point">05</span><span class="route-place">蔚山大橋展望台</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="2日目 クジラとオンギの物語" class="route-day-panel" data-route-day-panel="1" hidden="" id="route-day-ulsan-busan-1"><div class="route-day-heading"><div><p>DAY 02 / 05</p><h4>クジラとオンギの物語</h4></div><span>訪問・移動 3ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="2日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">スルド島 (Seuldo)</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">長生浦クジラ文化村</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">外高山オンギ村・オンギ博物館</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="3日目 釜山の文化と海岸" class="route-day-panel" data-route-day-panel="2" hidden="" id="route-day-ulsan-busan-2"><div class="route-day-heading"><div><p>DAY 03 / 05</p><h4>釜山の文化と海岸</h4></div><span>訪問・移動 5ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="3日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">ヒンヨウル文化村 (Huinnyeoul)</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">釜山近現代歴史館</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">海辺列車</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:3"><span aria-hidden="true" class="route-point">04</span><span class="route-place">青沙浦タリットル展望台</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:4"><span aria-hidden="true" class="route-point">05</span><span class="route-place">クラブ・ディ・オアシス</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="4日目 釜山で過ごす一日" class="route-day-panel" data-route-day-panel="3" hidden="" id="route-day-ulsan-busan-3"><div class="route-day-heading"><div><p>DAY 04 / 05</p><h4>釜山で過ごす一日</h4></div><span>訪問・移動 4ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="4日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">海東龍宮寺</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">松亭海水浴場・オーシャンビューカフェ</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">ミラク ザ マーケット・ポディウムダイブ</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:3"><span aria-hidden="true" class="route-point">04</span><span class="route-place">海雲台市場</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="5日目 次の出会いを約束して" class="route-day-panel" data-route-day-panel="4" hidden="" id="route-day-ulsan-busan-4"><div class="route-day-heading"><div><p>DAY 05 / 05</p><h4>次の出会いを約束して</h4></div><span>訪問・移動 2ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="5日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">ホテル出発</span><span class="route-kind">移動</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">金海空港</span><span class="route-kind">移動</span></li></ol></section><div class="route-links"><a href="travel/ulsan-busan.html">この商品の全日程を見る <span aria-hidden="true">↗</span></a><a href="contact.html?product=%EC%9A%B8%EC%82%B0%C2%B7%EB%B6%80%EC%82%B0%20%EB%B8%94%EB%A0%88%EC%A0%80%20%ED%9E%90%EB%A7%81%20%ED%88%AC%EC%96%B4">この旅行について問い合わせる <span aria-hidden="true">↗</span></a></div></div><div class="route-product-panel" data-route-panel="gyeongbuk-heritage" hidden="" id="route-panel-gyeongbuk-heritage"><div class="route-product-heading"><div><p>安東 · 高霊 · 慶州 · 6日間</p><h3>慶尚北道歴史・文化ツアー</h3></div><span aria-hidden="true" class="route-symbol">✳</span></div><div aria-label="慶尚北道歴史・文化ツアーの日を選択" class="route-day-buttons" role="group"><button aria-controls="route-day-gyeongbuk-heritage-0" aria-pressed="true" data-route-day="0" type="button"><span>DAY 01</span>1日目</button><button aria-controls="route-day-gyeongbuk-heritage-1" aria-pressed="false" data-route-day="1" type="button"><span>DAY 02</span>2日目</button><button aria-controls="route-day-gyeongbuk-heritage-2" aria-pressed="false" data-route-day="2" type="button"><span>DAY 03</span>3日目</button><button aria-controls="route-day-gyeongbuk-heritage-3" aria-pressed="false" data-route-day="3" type="button"><span>DAY 04</span>4日目</button><button aria-controls="route-day-gyeongbuk-heritage-4" aria-pressed="false" data-route-day="4" type="button"><span>DAY 05</span>5日目</button><button aria-controls="route-day-gyeongbuk-heritage-5" aria-pressed="false" data-route-day="5" type="button"><span>DAY 06</span>6日目</button></div><section aria-label="1日目 安東の風景" class="route-day-panel" data-route-day-panel="0" id="route-day-gyeongbuk-heritage-0"><div class="route-day-heading"><div><p>DAY 01 / 06</p><h4>安東の風景</h4></div><span>訪問・移動 3ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="1日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">河回村</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">陶山書院</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">月映橋</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="2日目 静かな寺院" class="route-day-panel" data-route-day-panel="1" hidden="" id="route-day-gyeongbuk-heritage-1"><div class="route-day-heading"><div><p>DAY 02 / 06</p><h4>静かな寺院</h4></div><span>訪問・移動 1ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="2日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">鳳停寺</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="3日目 大加耶の時間" class="route-day-panel" data-route-day-panel="2" hidden="" id="route-day-gyeongbuk-heritage-2"><div class="route-day-heading"><div><p>DAY 03 / 06</p><h4>大加耶の時間</h4></div><span>訪問・移動 3ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="3日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">カヤッコ村 (Gayatgo)</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">池山洞古墳群</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">大加耶博物館</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="4日目 慶州の古の美しさ" class="route-day-panel" data-route-day-panel="3" hidden="" id="route-day-gyeongbuk-heritage-3"><div class="route-day-heading"><div><p>DAY 04 / 06</p><h4>慶州の古の美しさ</h4></div><span>訪問・移動 3ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="4日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">仏国寺</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">石窟庵</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">皇理団キル</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="5日目 昼から夜まで、慶州" class="route-day-panel" data-route-day-panel="4" hidden="" id="route-day-gyeongbuk-heritage-4"><div class="route-day-heading"><div><p>DAY 05 / 06</p><h4>昼から夜まで、慶州</h4></div><span>訪問・移動 5ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="5日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">天馬塚</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">国立慶州博物館</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">東宮と月池</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:3"><span aria-hidden="true" class="route-point">04</span><span class="route-place">校村韓屋村</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:4"><span aria-hidden="true" class="route-point">05</span><span class="route-place">月精橋</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="6日目 旅の締めくくり" class="route-day-panel" data-route-day-panel="5" hidden="" id="route-day-gyeongbuk-heritage-5"><div class="route-day-heading"><div><p>DAY 06 / 06</p><h4>旅の締めくくり</h4></div><span>訪問・移動 1ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="6日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">空港へ移動・出国</span><span class="route-kind">移動</span></li></ol></section><div class="route-links"><a href="travel/gyeongbuk-heritage.html">この商品の全日程を見る <span aria-hidden="true">↗</span></a><a href="contact.html?product=%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EC%97%AD%EC%82%AC%C2%B7%EB%AC%B8%ED%99%94%20%ED%88%AC%EC%96%B4">この旅行について問い合わせる <span aria-hidden="true">↗</span></a></div></div><div class="route-product-panel" data-route-panel="gyeongbuk-drama" hidden="" id="route-panel-gyeongbuk-drama"><div class="route-product-heading"><div><p>聞慶 · 醴泉 · 浦項 · 慶州 · 5日間</p><h3>慶尚北道ドラマロケ地ツアー</h3></div><span aria-hidden="true" class="route-symbol">✳</span></div><div aria-label="慶尚北道ドラマロケ地ツアーの日を選択" class="route-day-buttons" role="group"><button aria-controls="route-day-gyeongbuk-drama-0" aria-pressed="true" data-route-day="0" type="button"><span>DAY 01</span>1日目</button><button aria-controls="route-day-gyeongbuk-drama-1" aria-pressed="false" data-route-day="1" type="button"><span>DAY 02</span>2日目</button><button aria-controls="route-day-gyeongbuk-drama-2" aria-pressed="false" data-route-day="2" type="button"><span>DAY 03</span>3日目</button><button aria-controls="route-day-gyeongbuk-drama-3" aria-pressed="false" data-route-day="3" type="button"><span>DAY 04</span>4日目</button><button aria-controls="route-day-gyeongbuk-drama-4" aria-pressed="false" data-route-day="4" type="button"><span>DAY 05</span>5日目</button></div><section aria-label="1日目 聞慶から始まる物語" class="route-day-panel" data-route-day-panel="0" id="route-day-gyeongbuk-drama-0"><div class="route-day-heading"><div><p>DAY 01 / 05</p><h4>聞慶から始まる物語</h4></div><span>訪問・移動 2ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="1日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">聞慶セジェオープンセット場</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">レールバイク</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="2日目 醴泉を経て浦項へ" class="route-day-panel" data-route-day-panel="1" hidden="" id="route-day-gyeongbuk-drama-1"><div class="route-day-heading"><div><p>DAY 02 / 05</p><h4>醴泉を経て浦項へ</h4></div><span>訪問・移動 2ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="2日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">回龍浦</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">虎尾串</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="3日目 浦項のドラマの風景" class="route-day-panel" data-route-day-panel="2" hidden="" id="route-day-gyeongbuk-drama-2"><div class="route-day-heading"><div><p>DAY 03 / 05</p><h4>浦項のドラマの風景</h4></div><span>訪問・移動 3ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="3日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">九龍浦日本人家屋通り</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">清河公進市場</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">スペースウォーク</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="4日目 慶州の今と昔" class="route-day-panel" data-route-day-panel="3" hidden="" id="route-day-gyeongbuk-drama-3"><div class="route-day-heading"><div><p>DAY 04 / 05</p><h4>慶州の今と昔</h4></div><span>訪問・移動 5ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="4日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">仏国寺</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">普門湖</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">大陵苑</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:3"><span aria-hidden="true" class="route-point">04</span><span class="route-place">皇理団キル</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:4"><span aria-hidden="true" class="route-point">05</span><span class="route-place">東宮と月池</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="5日目 旅の締めくくり" class="route-day-panel" data-route-day-panel="4" hidden="" id="route-day-gyeongbuk-drama-4"><div class="route-day-heading"><div><p>DAY 05 / 05</p><h4>旅の締めくくり</h4></div><span>訪問・移動 1ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="5日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">空港へ移動・出国</span><span class="route-kind">移動</span></li></ol></section><div class="route-links"><a href="travel/gyeongbuk-drama.html">この商品の全日程を見る <span aria-hidden="true">↗</span></a><a href="contact.html?product=%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EB%93%9C%EB%9D%BC%EB%A7%88%20%EC%B4%AC%EC%98%81%EC%A7%80%20%ED%88%AC%EC%96%B4">この旅行について問い合わせる <span aria-hidden="true">↗</span></a></div></div><div class="route-product-panel" data-route-panel="harmonize" hidden="" id="route-panel-harmonize"><div class="route-product-heading"><div><p>山清 · 陜川 · 河東 · 釜山 · 4泊5日</p><h3>ハーモナイズツアー</h3></div><span aria-hidden="true" class="route-symbol">✳</span></div><div aria-label="ハーモナイズツアーの日を選択" class="route-day-buttons" role="group"><button aria-controls="route-day-harmonize-0" aria-pressed="true" data-route-day="0" type="button"><span>DAY 01</span>1日目</button><button aria-controls="route-day-harmonize-1" aria-pressed="false" data-route-day="1" type="button"><span>DAY 02</span>2日目</button><button aria-controls="route-day-harmonize-2" aria-pressed="false" data-route-day="2" type="button"><span>DAY 03</span>3日目</button><button aria-controls="route-day-harmonize-3" aria-pressed="false" data-route-day="3" type="button"><span>DAY 04</span>4日目</button><button aria-controls="route-day-harmonize-4" aria-pressed="false" data-route-day="4" type="button"><span>DAY 05</span>5日目</button></div><section aria-label="1日目 山清でひと休み" class="route-day-panel" data-route-day-panel="0" id="route-day-harmonize-0"><div class="route-day-heading"><div><p>DAY 01 / 05</p><h4>山清でひと休み</h4></div><span>訪問・移動 2ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="1日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">修禅寺 (Suseonsa)</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">東医宝鑑村</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="2日目 陜川と河東の時間" class="route-day-panel" data-route-day-panel="1" hidden="" id="route-day-harmonize-1"><div class="route-day-heading"><div><p>DAY 02 / 05</p><h4>陜川と河東の時間</h4></div><span>訪問・移動 3ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="2日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">陜川映像テーマパーク</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">海印寺</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">メアム製茶園 (Maeam)</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="3日目 釜山の色に出会う" class="route-day-panel" data-route-day-panel="2" hidden="" id="route-day-harmonize-2"><div class="route-day-heading"><div><p>DAY 03 / 05</p><h4>釜山の色に出会う</h4></div><span>訪問・移動 2ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="3日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">アルテミュージアム</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">甘川文化村</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="4日目 釜山の海に沿って" class="route-day-panel" data-route-day-panel="3" hidden="" id="route-day-harmonize-3"><div class="route-day-heading"><div><p>DAY 04 / 05</p><h4>釜山の海に沿って</h4></div><span>訪問・移動 4ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="4日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">海東龍宮寺</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:1"><span aria-hidden="true" class="route-point">02</span><span class="route-place">ロッテプレミアムアウトレット</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:2"><span aria-hidden="true" class="route-point">03</span><span class="route-place">青沙浦タリットル展望台</span><span class="route-kind">訪問</span></li><li class="route-node" style="--route-order:3"><span aria-hidden="true" class="route-point">04</span><span class="route-place">広安里</span><span class="route-kind">訪問</span></li></ol></section><section aria-label="5日目 旅の締めくくり" class="route-day-panel" data-route-day-panel="4" hidden="" id="route-day-harmonize-4"><div class="route-day-heading"><div><p>DAY 05 / 05</p><h4>旅の締めくくり</h4></div><span>訪問・移動 1ステップ</span></div><div aria-hidden="true" class="route-stop-labels"><span>順番</span><span>訪問・移動先</span><span>区分</span></div><ol aria-label="5日目の訪問順序" class="route-nodes"><li class="route-node" style="--route-order:0"><span aria-hidden="true" class="route-point">01</span><span class="route-place">金海空港から出国</span><span class="route-kind">移動</span></li></ol></section><div class="route-links"><a href="travel/harmonize.html">この商品の全日程を見る <span aria-hidden="true">↗</span></a><a href="contact.html?product=%ED%95%98%EB%AA%A8%EB%82%98%EC%9D%B4%EC%A6%88%20%ED%88%AC%EC%96%B4">この旅行について問い合わせる <span aria-hidden="true">↗</span></a></div></div><div class="airport-screen-footer"><span>02 | 訪問日程</span><span class="airport-clock-wrap">韓国時間 <time aria-live="off" class="airport-clock">--:--</time></span></div></div></div><p aria-live="polite" class="route-update" id="route-update" role="status"></p><p class="route-disclaimer">実際の地図ではなく、提案日程の順序を示した図です。訪問順序と催行の可否はご相談後に確定します</p><a class="airport-gallery-link" href="index.html#moments">JSBの実際のイベント・旅行の現場を見る ↗</a></section><section class="closing"><div class="container closing-inner"><span class="eyebrow">LET’S CREATE YOUR NEXT</span><h2>旅行・イベントのご相談は、<br/><em>日程と人数から</em></h2><p>旅の目的と日程、人数をお知らせください<br/>ご関心のある地域と必要なサービスもあわせてご記入ください</p><a class="btn btn-primary" href="contact.html">お問い合わせを作成 ↗</a></div></section></main><footer><div class="foot-grid"><div class="foot-brand"><a class="logo" href="index.html"><img alt="JSB TOUR &amp; MICE" class="logo-img" height="286" loading="lazy" src="../logo.png?v=691401bd10" width="486"/></a><p>釜山を拠点とする旅行・イベントの専門企業<br/>国際会議・展示会・企業イベントとオーダーメイド旅行をご用意します</p><div class="socials"><a aria-label="Instagram 新しいウィンドウ" href="https://www.instagram.com/jsbtour.kr/" rel="noopener" target="_blank">IG</a><a aria-label="YouTube 新しいウィンドウ" href="https://www.youtube.com/@JSBTourMICE" rel="noopener" target="_blank">YT</a></div></div><div><h5>Explore</h5><ul><li><a href="services.html">サービス</a></li><li><a href="destinations.html">旅行商品</a></li><li><a href="about.html">会社紹介</a></li><li><a href="about.html#history">主な沿革</a></li><li><a href="https://jsbtour.com/main/main.html" rel="noopener" target="_blank">従来の予約・会員サービス ↗</a></li></ul></div><div><h5>Start a conversation</h5><ul><li><a href="tel:+82517420808">051-742-0808</a></li><li><a href="mailto:jsbmaster@jsbtour.com">jsbmaster@jsbtour.com</a></li><li><a href="contact.html">お問い合わせを作成 ↗</a></li><li><a href="privacy.html">個人情報処理方針</a></li></ul></div><div><h5>Visit us</h5><ul><li><span>Haeundae-gu, Busan<br/>48 Centum jungang-ro</span></li><li><a href="https://map.naver.com/p/entry/place/1319863705" rel="noopener" target="_blank">NAVERマップで見る ↗</a></li><li><span>JSB Tour&amp;Mice Co., Ltd</span></li></ul></div></div><p class="biz-info">JSB Tour&amp;Mice Co., Ltd · 代表・個人情報保護責任者 Sandra Kim · 事業者登録番号 448-88-00796 · 通信販売業申告 2021-부산해운대-1113 · 1515-2, 48 Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=4488800796" rel="noopener" target="_blank">事業者情報の確認 ↗<span class="sr-only"> (新しいウィンドウ)</span></a></p><div class="copy"><span>© 2026 JSB TOUR &amp; MICE ALL RIGHTS RESERVED</span><span>TOURISM · MICE · LOCAL EXPERIENCE</span></div></footer><script src="../i18n-data.js?v=f1c75fd878"></script><script src="../i18n.js?v=7f59abd29b"></script><script defer="" src="../script.js?v=470c88d450"></script><script defer="" src="../motion.js?v=6ad526e7c5"></script><script defer="" src="../route-shared.js?v=dc09a103cf"></script><dialog aria-labelledby="photo-title" class="photo-dialog"><button aria-label="写真を閉じる" class="photo-close">閉じる ×</button><img alt="" class="photo-large"/><div class="photo-info"><small id="photo-number"></small><h2 id="photo-title"></h2><p id="photo-description"></p><small id="photo-source"></small></div><div class="photo-controls"><button aria-label="前の写真" data-photo-step="-1">←</button><button aria-label="次の写真" data-photo-step="1">→</button></div></dialog></body></html>
