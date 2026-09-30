@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.jsbtour.com/sitemap.xml
