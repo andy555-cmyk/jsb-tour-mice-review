@@ -13,7 +13,7 @@
   days.forEach(day=>{day.hidden=Number(day.dataset.routeDayPanel)!==index;day.classList.remove('route-flip-active');});
   const current=days.find(day=>!day.hidden);
   if(current&&!document.body.classList.contains('motion-paused')&&explorer.dataset.motionPaused!=='true'&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){void current.offsetWidth;current.classList.add('route-flip-active');}
-  if(announce){const active=days.find(day=>!day.hidden);const count=active.querySelectorAll('.route-node').length;status.textContent=T('{name}, {day}일차: {place} {count}개 방문·이동 단계','{name}, day {day}: {place}, {count} stops and transfers',{name:panel.querySelector('h3').textContent,day:index+1,place:active.querySelector('h4').textContent,count});}
+  if(announce){const active=days.find(day=>!day.hidden);const count=active.querySelectorAll('.route-node').length;status.textContent=T('{name}, {day}일차: {place} {count}개 방문·이동 단계','{name}, day {day}: {place}. Stops: {count}',{name:panel.querySelector('h3').textContent,day:index+1,place:active.querySelector('h4').textContent,count});}
  }
  productButtons.forEach(button=>button.addEventListener('click',()=>{
   productButtons.forEach(other=>{other.setAttribute('aria-pressed',String(other===button));const state=other.querySelector('.route-selection');if(state)state.textContent=other===button?T('선택됨','Selected'):T('일정 보기','View itinerary');});

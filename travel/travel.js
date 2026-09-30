@@ -5,13 +5,14 @@
  const cards=[...document.querySelectorAll('[data-category]')];
  const search=document.getElementById('travel-search');
  let category='all';
- const normalize=text=>text.normalize('NFKC').toLocaleLowerCase().replace(/\s+/g,' ').trim();
+ // Accents and apostrophe styles do not matter when searching (cote = côte, l'île = l’île); Hangul recomposes after NFKD.
+ const normalize=text=>text.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').normalize('NFKC').replace(/[’‘`´]/g,"'").toLocaleLowerCase().replace(/\s+/g,' ').trim();
  function applyFilters(){
   const terms=normalize(search?.value||'').split(' ').filter(Boolean);
   let visible=0;
   cards.forEach(card=>{card.hidden=!(category==='all'||card.dataset.category===category)||!terms.every(term=>normalize(card.dataset.search).includes(term));if(!card.hidden)visible++;});
   filters.forEach(button=>{const on=button.dataset.filter===category;button.classList.toggle('active',on);button.setAttribute('aria-pressed',String(on));});
-  const count=document.getElementById('filter-count');if(count)count.textContent=T('{n}개의 여정','{n} journeys',{n:visible});
+  const count=document.getElementById('filter-count');if(count)count.textContent=T('{n}개의 여정','Journeys: {n}',{n:visible});
   const empty=document.getElementById('search-empty');if(empty)empty.hidden=visible!==0;
  }
  filters.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.filter;applyFilters();}));
@@ -72,7 +73,7 @@
   days.forEach(day=>{day.hidden=Number(day.dataset.routeDayPanel)!==index;day.classList.remove('route-flip-active');});
   const current=days.find(day=>!day.hidden);
   if(current&&!document.body.classList.contains('motion-paused')&&explorer.dataset.motionPaused!=='true'&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){void current.offsetWidth;current.classList.add('route-flip-active');}
-  if(announce){const active=days.find(day=>!day.hidden);const count=active.querySelectorAll('.route-node').length;status.textContent=T('{name}, {day}일차: {place} {count}개 방문·이동 단계','{name}, day {day}: {place}, {count} stops and transfers',{name:panel.querySelector('h3').textContent,day:index+1,place:active.querySelector('h4').textContent,count});}
+  if(announce){const active=days.find(day=>!day.hidden);const count=active.querySelectorAll('.route-node').length;status.textContent=T('{name}, {day}일차: {place} {count}개 방문·이동 단계','{name}, day {day}: {place}. Stops: {count}',{name:panel.querySelector('h3').textContent,day:index+1,place:active.querySelector('h4').textContent,count});}
  }
  productButtons.forEach(button=>button.addEventListener('click',()=>{
   productButtons.forEach(other=>{other.setAttribute('aria-pressed',String(other===button));const state=other.querySelector('.route-selection');if(state)state.textContent=other===button?T('선택됨','Selected'):T('일정 보기','View itinerary');});

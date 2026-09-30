@@ -58,7 +58,6 @@ html[lang=en] .hero .display-line em{margin-right:.3em}
 html[lang^=zh] *,html[lang=ja] *{word-break:normal!important;line-break:strict}
 html[lang^=zh]{--font-sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;--font-display:"Helvetica Neue","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
 html[lang=ja]{--font-sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo","Noto Sans JP",sans-serif;--font-display:"Helvetica Neue","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif}
-html[lang=fr],html[lang=es]{hyphens:auto}
 /* The header's own nav styles (flex rows, small caps) must not reach the language list. */
 .nav .lang-menu ul{display:block;gap:0}
 .nav .lang-menu ul li{display:block;margin:0}
@@ -75,6 +74,40 @@ html:not([lang=ko]) .nav .nav-ko,html:not([lang=ko]) .mobile-menu .nav-ko{displa
 .biz-info a{white-space:normal}
 @media(max-width:400px){.travel-site .nav nav{max-width:132px}.travel-site .nav nav a.wayfinding-link{white-space:normal;text-align:center;line-height:1.25}}
 @media(max-width:360px){.travel-site .nav nav{max-width:112px}}
-/* Japanese headings: break between phrases where the browser supports it (Chrome, Edge). */
-html[lang=ja] :is(h1,h2,h3,h4,.display-line,.hero-kicker){word-break:auto-phrase!important}
+/* Japanese headings: character breaks with balanced lines (text-wrap:balance below). Phrase breaking (auto-phrase)
+   force-split phrases longer than a line and left 1–2 characters on the last line (…ツ / アー). */
 html[lang=ja] :is(h1,h2,h3,h4,.display-line,.hero-kicker){overflow-wrap:anywhere}
+/* ---- Longer translated text (multilingual audit 2026-09-30) ---- */
+/* Headings: even line lengths, no lone word or character on the last line; running text avoids a one-word
+   last line where supported. All languages (Chrome/Edge 114+, Safari 17.5+, Firefox 121+; others ignore it). */
+:is(h1,h2,h3,h4){text-wrap:balance}
+.heading-line{display:block}  /* translated headings: one block per line of the Korean layout (see split_heading_lines) */
+:is(p,li,dd,figcaption){text-wrap:pretty}
+/* French/Spanish: the automatic hyphenation split headings, labels and place names (INTERNA-TIONAUX, Po-hang).
+   Keep whole words; a word longer than its box still breaks instead of overflowing. */
+html[lang=fr],html[lang=es]{-webkit-hyphens:manual;hyphens:manual}
+/* Japanese keeps its own rule above (overflow-wrap:anywhere); with break-word a long phrase widened
+   whole columns on phones. Latin scripts: a word longer than its line breaks instead of widening the page. */
+html:is([lang=en],[lang=fr],[lang=es],[lang^=zh]) :is(h1,h2,h3,h4,h5,.eyebrow,.btn,button,summary,label,th,dt){overflow-wrap:anywhere}
+/* Airport board: translated durations and "view itinerary" labels are 2–3× the Korean length, so each row
+   shows the region with the status label on the right and the duration underneath. */
+html:not([lang=ko]) .route-product-buttons button{grid-template-columns:34px minmax(0,1fr) 88px;grid-template-areas:"no dest sel" ". dur sel";row-gap:1px;padding-top:9px;padding-bottom:9px}
+html:not([lang=ko]) .route-product-buttons button .route-program{grid-area:no;align-self:start}
+html:not([lang=ko]) .route-product-buttons button .route-destination{grid-area:dest;line-height:1.35}
+html:not([lang=ko]) .route-product-buttons button .route-duration{grid-area:dur;white-space:normal;font-size:12.5px;line-height:1.35;opacity:.85}
+html:not([lang=ko]) .route-product-buttons button .route-selection{grid-area:sel;white-space:normal;font-size:12.5px;line-height:1.25;padding:4px 3px}
+html:not([lang=ko]) .route-board-labels{grid-template-columns:34px minmax(0,1fr) 88px}
+html:not([lang=ko]) .route-board-labels>span:nth-child(3){display:none}
+html:not([lang=ko]) .route-board-labels>span{white-space:nowrap}
+/* Stop list: "Transfert", "Traslado", "Transfer" need a wider type column than 이동 / 방문. */
+html:is([lang=en],[lang=fr],[lang=es]) :is(.route-stop-labels,.route-node){grid-template-columns:28px minmax(0,1fr) 68px}
+/* Two route links side by side are too narrow for translated text (the board is ~430px even on desktop): stack them. */
+html:not([lang=ko]) .route-links{flex-direction:column;align-items:flex-start;gap:0}
+/* Travel filters: wrap whole chips to a new row instead of squeezing their text into three lines. */
+html:not([lang=ko]) .filters{flex-wrap:wrap}
+html:not([lang=ko]) .filters button{white-space:nowrap}
+/* Travel hero on phones: the translated heading and text are taller, so keep the photo caption (HELLO, BUSAN)
+   below them instead of under the button. */
+@media(max-width:760px){html:not([lang=ko]) .travel-hero .hero-copy{padding-bottom:230px}}
+/* Page titles on the smallest phones: long Latin words (confidentialité) fit whole instead of breaking. */
+@media(max-width:360px){html:is([lang=en],[lang=fr],[lang=es]) .page-head h1{font-size:31px!important}}

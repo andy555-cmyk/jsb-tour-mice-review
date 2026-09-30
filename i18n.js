@@ -12,4 +12,18 @@
     if (vars) Object.keys(vars).forEach(function (key) { text = text.split('{' + key + '}').join(String(vars[key])); });
     return text;
   };
+  // The language menu is a <details>: close it on a click outside or on Escape, like other menus.
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('.lang-menu[open]').forEach(function (menu) {
+      if (!menu.contains(event.target)) menu.removeAttribute('open');
+    });
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Escape') return;
+    document.querySelectorAll('.lang-menu[open]').forEach(function (menu) {
+      menu.removeAttribute('open');
+      var summary = menu.querySelector('summary');
+      if (summary) summary.focus();
+    });
+  });
 })();

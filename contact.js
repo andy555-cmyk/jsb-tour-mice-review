@@ -5,6 +5,8 @@
   const lang = window.JSB_LANG || (english ? 'en' : 'ko');
   // Tells JSB which language page the visitor used (email stays in Korean for JSB staff).
   const pageLanguage = {en: '영문', fr: '불어', es: '스페인어', zh: '중국어', ja: '일본어'}[lang] || '';
+  // "Label: value" in the visitor's typography (French puts a no-break space before the colon; CJK uses a full-width one).
+  const colon = lang === 'fr' ? '\u00a0: ' : (lang === 'zh' || lang === 'ja' ? '：' : ': ');
   const form = document.getElementById('inquiry-form');
   const result = document.getElementById('inquiry-result');
   const preview = document.getElementById('inquiry-preview');
@@ -104,21 +106,21 @@
     const choice = product.options[product.selectedIndex]?.text || t('미정', 'To be discussed');
     preparedText = [
       t('[JSB TOUR & MICE 문의]', '[JSB TOUR & MICE Inquiry]'),
-      `${t('이름', 'Name')}: ${value('name')}`,
-      `${t('회사·단체', 'Company / Group')}: ${value('company') || t('미기재', 'Not provided')}`,
-      `${t('연락 이메일', 'Email')}: ${value('email')}`,
-      `${t('관심 상품·서비스', 'Interested in')}: ${value('product') ? choice : t('미정', 'To be discussed')}`,
-      `${t('희망 출발일·행사일', 'Preferred travel / event date')}: ${value('date') || t('미정', 'To be discussed')}`,
-      `${t('예상 인원', 'Estimated group size')}: ${value('people') ? value('people') + t('명', ' people') : t('미정', 'To be discussed')}`,
+      `${t('이름', 'Name')}${colon}${value('name')}`,
+      `${t('회사·단체', 'Company or group')}${colon}${value('company') || t('미기재', 'Not provided')}`,
+      `${t('연락 이메일', 'Email')}${colon}${value('email')}`,
+      `${t('관심 상품·서비스', 'Interested in')}${colon}${value('product') ? choice : t('미정', 'To be discussed')}`,
+      `${t('희망 출발일·행사일', 'Preferred travel or event date')}${colon}${value('date') || t('미정', 'To be discussed')}`,
+      `${t('예상 인원', 'Expected group size')}${colon}${value('people') ? value('people') + t('명', ' pax') : t('미정', 'To be discussed')}`,
       '', t('문의 내용:', 'Message:'), value('message'),
     ].join('\n');
     preview.value = preparedText;
-    const ticketValues = {name:value('name'),company:value('company')||t('미기재','Not provided'),date:value('date')||t('미정','To be discussed'),people:value('people')?value('people')+t('명',' people'):t('미정','To be discussed'),email:value('email'),product:value('product')?choice:t('여행·행사 상담','Travel / event inquiry'),message:value('message')};
+    const ticketValues = {name:value('name'),company:value('company')||t('미기재','Not provided'),date:value('date')||t('미정','To be discussed'),people:value('people')?value('people')+t('명',' pax'):t('미정','To be discussed'),email:value('email'),product:value('product')?choice:t('여행·행사 상담','Travel or event inquiry'),message:value('message')};
     document.querySelectorAll('[data-ticket]').forEach(field=>{field.textContent=ticketValues[field.dataset.ticket]||'';});
     // Very long mailto links are not portable. The full memo always remains copyable.
     const mailFits = encodeURIComponent(preparedText).length <= 1800;
     const mailBody = mailFits ? preparedText : t('안녕하세요. JSB TOUR & MICE에 문의드립니다.\n\n[웹페이지에서 복사한 문의 내용을 여기에 붙여 넣어 주세요.]', 'Hello JSB TOUR & MICE,\n\n[Please paste the inquiry you copied from the website here.]');
-    emailLink.href = 'mailto:jsbmaster@jsbtour.com?subject=' + encodeURIComponent(t('[홈페이지 문의] ', '[Website inquiry] ') + (value('product') ? choice : t('여행·행사 상담','Travel / event inquiry'))) + '&body=' + encodeURIComponent(mailBody);
+    emailLink.href = 'mailto:jsbmaster@jsbtour.com?subject=' + encodeURIComponent(t('[홈페이지 문의] ', '[Website inquiry] ') + (value('product') ? choice : t('여행·행사 상담','Travel or event inquiry'))) + '&body=' + encodeURIComponent(mailBody);
     document.getElementById('email-help').textContent = mailFits
       ? t('메일 앱에서 수신 주소와 내용을 확인한 뒤 직접 보내 주세요. 버튼을 눌러도 자동 발송되지 않습니다', 'Check the address and message in your email app, then press Send. Nothing is sent automatically')
       : t('문의 내용이 길어 메일 앱에 자동으로 담지 않습니다. 먼저 내용을 복사하고, 메일 앱에서 붙여 넣은 뒤 직접 보내 주세요', 'Your message is too long to place into an email automatically. Copy it first, paste it into your email app, then send it yourself');
@@ -165,14 +167,14 @@
       const data = await response.json();
       if (!response.ok || String(data.success).toLowerCase() !== 'true') throw new Error('Submission was not accepted');
       sent = true;
-      sendButton.textContent = t('전송 요청 완료', 'Submission request accepted');
+      sendButton.textContent = t('전송 요청 완료', 'Request submitted');
       deliveryState.textContent = t('전송 서비스가 문의를 받았습니다. JSB 메일 수신은 확인 중입니다', 'The delivery service accepted your inquiry. JSB email delivery is being verified');
       ticketDeliveryState.textContent = deliveryState.textContent;
       status.textContent = t('전송 요청이 처리되었습니다. JSB 메일 수신은 확인 중입니다. 급한 문의는 전화 또는 메일 앱으로도 연락해 주세요', 'Your submission request was accepted. JSB email delivery is being verified. For urgent inquiries, please call or email us directly');
     } catch {
       sendButton.disabled = false;
       sendButton.textContent = t('다시 전송하기 ↗', 'Try sending again ↗');
-      status.textContent = t('전송을 확인하지 못했습니다. 아직 접수됐다고 볼 수 없습니다. 아래 메일 앱 버튼을 이용하거나 다시 시도해 주세요', 'We could not confirm submission. Please try again or use the email app link below');
+      status.textContent = t('전송을 확인하지 못했습니다. 아직 접수됐다고 볼 수 없습니다. 아래 메일 앱 버튼을 이용하거나 다시 시도해 주세요', 'We could not confirm that your inquiry was sent, so it may not have been received. Please use the email app button below or try again');
     } finally {
       window.clearTimeout(timeout);
     }
@@ -217,7 +219,7 @@
     anchor.click();
     anchor.remove();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-    status.textContent = sent ? t('메모 파일 내려받기를 시작했습니다. 전송 요청 상태는 위에서 확인해 주세요', 'Your note is downloading. Check the submission status above') : t('메모 파일 내려받기를 시작했습니다. 기기의 다운로드 목록을 확인해 주세요. 문의는 전송되지 않았습니다', 'Your note is downloading. The inquiry has not been sent');
+    status.textContent = sent ? t('메모 파일 내려받기를 시작했습니다. 전송 요청 상태는 위에서 확인해 주세요', 'Your note is downloading. Check the submission status above') : t('메모 파일 내려받기를 시작했습니다. 기기의 다운로드 목록을 확인해 주세요. 문의는 전송되지 않았습니다', 'Your note is downloading. Check your device’s downloads. The inquiry has not been sent');
   });
   emailLink.addEventListener('click', () => {
     status.textContent = t('메일 앱 열기를 요청했습니다. 앱이 열리지 않으면 내용을 복사해 jsbmaster@jsbtour.com으로 직접 보내 주세요. 자동으로 발송되지 않습니다', 'Your email app should open. If it does not, copy the inquiry and email jsbmaster@jsbtour.com directly. Nothing is sent automatically');
